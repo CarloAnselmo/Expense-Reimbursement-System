@@ -1,0 +1,150 @@
+2020-10-16 20:13:35 ERROR ReimbursementDao:73 - org.postgresql.util.PSQLException: No value specified for parameter 1.
+2020-10-16 20:17:05 INFO  ReimbursementDao:31 - asd
+2020-10-16 21:13:31 ERROR ReimbursementDao:56 - java.sql.SQLException: The url cannot be null
+2020-10-16 21:13:31 ERROR ReimbursementDao:81 - java.sql.SQLException: The url cannot be null
+2020-10-16 21:14:21 ERROR ReimbursementDao:54 - java.sql.SQLException: The url cannot be null
+2020-10-16 21:14:22 ERROR ReimbursementDao:79 - java.sql.SQLException: The url cannot be null
+2020-10-16 21:15:51 ERROR ReimbursementDao:54 - java.sql.SQLException: The url cannot be null
+2020-10-16 21:15:51 ERROR ReimbursementDao:79 - java.sql.SQLException: The url cannot be null
+2020-10-16 21:17:38 ERROR ReimbursementDao:54 - java.sql.SQLException: The url cannot be null
+2020-10-16 21:17:38 ERROR ReimbursementDao:79 - java.sql.SQLException: The url cannot be null
+2020-10-16 21:20:13 ERROR ReimbursementDao:54 - java.sql.SQLException: The url cannot be null
+2020-10-16 21:20:13 ERROR ReimbursementDao:79 - java.sql.SQLException: The url cannot be null
+2020-10-16 21:21:10 ERROR ReimbursementDao:54 - org.postgresql.util.PSQLException: FATAL: password authentication failed for user "carlo"
+2020-10-16 21:21:11 ERROR ReimbursementDao:79 - org.postgresql.util.PSQLException: FATAL: password authentication failed for user "carlo"
+2020-10-16 21:22:14 ERROR ReimbursementDao:54 - org.postgresql.util.PSQLException: FATAL: password authentication failed for user "carlo"
+2020-10-16 21:22:14 ERROR ReimbursementDao:79 - org.postgresql.util.PSQLException: FATAL: password authentication failed for user "carlo"
+2020-10-17 19:11:57 ERROR ReimbursementDao:54 - org.postgresql.util.PSQLException: FATAL: password authentication failed for user "carlo"
+2020-10-17 19:11:57 ERROR ReimbursementDao:79 - org.postgresql.util.PSQLException: FATAL: password authentication failed for user "carlo"
+2020-10-18 00:09:35 ERROR ReimbursementDao:102 - org.postgresql.util.PSQLException: No value specified for parameter 3.
+2020-10-18 00:13:18 ERROR ReimbursementDao:106 - org.postgresql.util.PSQLException: No value specified for parameter 5.
+2020-10-18 00:13:29 ERROR ReimbursementDao:106 - org.postgresql.util.PSQLException: ERROR: syntax error at or near ","
+  Position: 159
+2020-10-18 00:14:41 ERROR ReimbursementDao:106 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_reimbursement
+2020-10-18 00:15:05 ERROR ReimbursementDao:106 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_reimbursement" violates foreign key constraint "ers_reimbursement_reimb_resolver_fkey"
+  Detail: Key (reimb_resolver)=(0) is not present in table "ers_users".
+2020-10-18 00:34:32 ERROR ReimbursementDao:140 - org.postgresql.util.PSQLException: ERROR: permission denied for sequence ers_reimbursement_reimb_id_seq
+2020-10-18 15:31:55 ERROR ReimbursementDao:34 - java.sql.SQLException: The url cannot be null
+2020-10-18 15:31:55 ERROR ReimbursementDao:34 - java.sql.SQLException: The url cannot be null
+2020-10-18 15:31:55 ERROR ReimbursementDao:54 - java.sql.SQLException: The url cannot be null
+2020-10-18 18:04:11 ERROR UserDao:70 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_users
+2020-10-18 18:14:34 ERROR UserDao:71 - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "ers_users_ers_username_key"
+  Detail: Key (ers_username)=(Testman) already exists.
+2020-10-19 18:56:13 ERROR UserDao:70 - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "ers_users_ers_username_key"
+  Detail: Key (ers_username)=(Testman) already exists.
+2020-10-19 18:59:55 ERROR UserDao:70 - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "ers_users_ers_username_key"
+  Detail: Key (ers_username)=(Testman2) already exists.
+2020-10-19 23:25:39 ERROR ReimbursementDao:34 - org.postgresql.util.PSQLException: The column name reimb_status was not found in this ResultSet.
+2020-10-19 23:25:40 ERROR UserDao:71 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_users
+2020-10-19 23:25:40 ERROR UserDao:93 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_users
+2020-10-19 23:25:40 ERROR ReimbursementDao:148 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_reimbursement
+2020-10-19 23:25:40 ERROR ReimbursementDao:34 - org.postgresql.util.PSQLException: The column name reimb_status was not found in this ResultSet.
+2020-10-19 23:25:41 ERROR ReimbursementDao:74 - org.postgresql.util.PSQLException: The column name reimb_status was not found in this ResultSet.
+2020-10-19 23:26:14 ERROR UserDao:71 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_users
+2020-10-19 23:26:14 ERROR UserDao:93 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_users
+2020-10-19 23:26:14 ERROR ReimbursementDao:148 - org.postgresql.util.PSQLException: ERROR: cannot delete from view "complete_reimbursement"
+  Detail: Views that do not select from a single table or view are not automatically updatable.
+  Hint: To enable deleting from the view, provide an INSTEAD OF DELETE trigger or an unconditional ON DELETE DO INSTEAD rule.
+2020-10-19 23:26:15 ERROR ReimbursementDao:108 - org.postgresql.util.PSQLException: ERROR: column "reimb_status_id" of relation "complete_reimbursement" does not exist
+  Position: 167
+2020-10-19 23:26:15 ERROR ReimbursementDao:132 - org.postgresql.util.PSQLException: ERROR: column "reimb_type_id" of relation "complete_reimbursement" does not exist
+  Position: 99
+2020-10-19 23:26:15 ERROR ReimbursementDao:148 - org.postgresql.util.PSQLException: ERROR: cannot delete from view "complete_reimbursement"
+  Detail: Views that do not select from a single table or view are not automatically updatable.
+  Hint: To enable deleting from the view, provide an INSTEAD OF DELETE trigger or an unconditional ON DELETE DO INSTEAD rule.
+2020-10-19 23:27:16 ERROR UserDao:71 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_users
+2020-10-19 23:27:16 ERROR UserDao:93 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_users
+2020-10-19 23:27:16 ERROR ReimbursementDao:148 - org.postgresql.util.PSQLException: ERROR: cannot delete from view "complete_reimbursement"
+  Detail: Views that do not select from a single table or view are not automatically updatable.
+  Hint: To enable deleting from the view, provide an INSTEAD OF DELETE trigger or an unconditional ON DELETE DO INSTEAD rule.
+2020-10-19 23:27:17 ERROR ReimbursementDao:108 - org.postgresql.util.PSQLException: ERROR: column "reimb" does not exist
+  Position: 207
+2020-10-19 23:27:17 ERROR ReimbursementDao:132 - org.postgresql.util.PSQLException: ERROR: cannot insert into view "complete_reimbursement"
+  Detail: Views that do not select from a single table or view are not automatically updatable.
+  Hint: To enable inserting into the view, provide an INSTEAD OF INSERT trigger or an unconditional ON INSERT DO INSTEAD rule.
+2020-10-19 23:27:17 ERROR ReimbursementDao:148 - org.postgresql.util.PSQLException: ERROR: cannot delete from view "complete_reimbursement"
+  Detail: Views that do not select from a single table or view are not automatically updatable.
+  Hint: To enable deleting from the view, provide an INSTEAD OF DELETE trigger or an unconditional ON DELETE DO INSTEAD rule.
+2020-10-19 23:29:14 ERROR UserDao:71 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_users
+2020-10-19 23:29:14 ERROR UserDao:93 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_users
+2020-10-19 23:29:14 ERROR ReimbursementDao:148 - org.postgresql.util.PSQLException: ERROR: cannot delete from view "complete_reimbursement"
+  Detail: Views that do not select from a single table or view are not automatically updatable.
+  Hint: To enable deleting from the view, provide an INSTEAD OF DELETE trigger or an unconditional ON DELETE DO INSTEAD rule.
+2020-10-19 23:29:15 ERROR ReimbursementDao:108 - org.postgresql.util.PSQLException: ERROR: cannot update view "complete_reimbursement"
+  Detail: Views that do not select from a single table or view are not automatically updatable.
+  Hint: To enable updating the view, provide an INSTEAD OF UPDATE trigger or an unconditional ON UPDATE DO INSTEAD rule.
+2020-10-19 23:29:15 ERROR ReimbursementDao:132 - org.postgresql.util.PSQLException: ERROR: cannot insert into view "complete_reimbursement"
+  Detail: Views that do not select from a single table or view are not automatically updatable.
+  Hint: To enable inserting into the view, provide an INSTEAD OF INSERT trigger or an unconditional ON INSERT DO INSTEAD rule.
+2020-10-19 23:29:15 ERROR ReimbursementDao:148 - org.postgresql.util.PSQLException: ERROR: cannot delete from view "complete_reimbursement"
+  Detail: Views that do not select from a single table or view are not automatically updatable.
+  Hint: To enable deleting from the view, provide an INSTEAD OF DELETE trigger or an unconditional ON DELETE DO INSTEAD rule.
+2020-10-20 13:48:30 ERROR UserDao:71 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_users
+2020-10-20 13:48:30 ERROR UserDao:93 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_users
+2020-10-20 13:48:31 ERROR ReimbursementDao:148 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_reimbursement
+2020-10-20 13:48:31 ERROR ReimbursementDao:108 - org.postgresql.util.PSQLException: ERROR: column "reimb_author" is of type integer but expression is of type character varying
+  Hint: You will need to rewrite or cast the expression.
+  Position: 139
+2020-10-20 13:48:31 ERROR ReimbursementDao:132 - org.postgresql.util.PSQLException: ERROR: column "reimb_author_id" of relation "ers_reimbursement" does not exist
+  Position: 80
+2020-10-20 13:48:32 ERROR ReimbursementDao:148 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_reimbursement
+2020-10-20 13:50:12 ERROR UserDao:71 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_users
+2020-10-20 13:50:12 ERROR UserDao:93 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_users
+2020-10-20 13:50:13 ERROR ReimbursementDao:148 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_reimbursement
+2020-10-20 13:50:13 ERROR ReimbursementDao:108 - org.postgresql.util.PSQLException: ERROR: column "reimb_author" is of type integer but expression is of type character varying
+  Hint: You will need to rewrite or cast the expression.
+  Position: 139
+2020-10-20 13:50:14 ERROR ReimbursementDao:132 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_reimbursement
+2020-10-20 13:50:14 ERROR ReimbursementDao:148 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_reimbursement
+2020-10-20 13:58:58 ERROR UserDao:71 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_users
+2020-10-20 13:58:58 ERROR UserDao:93 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_users
+2020-10-20 13:58:58 ERROR ReimbursementDao:148 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_reimbursement
+2020-10-20 13:58:59 ERROR ReimbursementDao:108 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_reimbursement
+2020-10-20 13:58:59 ERROR ReimbursementDao:132 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_reimbursement
+2020-10-20 13:58:59 ERROR ReimbursementDao:148 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_reimbursement
+2020-10-20 14:00:56 ERROR UserDao:71 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_users
+2020-10-20 14:00:56 ERROR UserDao:93 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_users
+2020-10-20 14:00:56 ERROR ReimbursementDao:148 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_reimbursement
+2020-10-20 14:00:57 ERROR ReimbursementDao:108 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_reimbursement
+2020-10-20 14:00:57 ERROR ReimbursementDao:132 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_reimbursement
+2020-10-20 14:00:58 ERROR ReimbursementDao:148 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_reimbursement
+2020-10-20 14:19:03 ERROR UserDao:71 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_users
+2020-10-20 14:19:03 ERROR UserDao:93 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_users
+2020-10-20 14:19:04 ERROR ReimbursementDao:148 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_reimbursement
+2020-10-20 14:19:04 ERROR ReimbursementDao:108 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_reimbursement
+2020-10-20 14:19:04 ERROR ReimbursementDao:132 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_reimbursement
+2020-10-20 14:19:05 ERROR ReimbursementDao:148 - org.postgresql.util.PSQLException: ERROR: permission denied for table ers_reimbursement
+2020-10-20 14:21:29 ERROR ReimbursementDao:132 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_reimbursement" violates foreign key constraint "ers_reimbursement_reimb_type_id_fkey"
+  Detail: Key (reimb_type_id)=(0) is not present in table "ers_reimbursement_type".
+2020-10-20 14:25:18 ERROR ReimbursementDao:132 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_reimbursement" violates foreign key constraint "ers_reimbursement_reimb_type_id_fkey"
+  Detail: Key (reimb_type_id)=(0) is not present in table "ers_reimbursement_type".
+2020-10-20 14:29:17 ERROR UserDao:71 - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "ers_users_ers_username_key"
+  Detail: Key (ers_username)=(Testman2) already exists.
+2020-10-20 14:29:19 ERROR ReimbursementDao:132 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_reimbursement" violates foreign key constraint "ers_reimbursement_reimb_type_id_fkey"
+  Detail: Key (reimb_type_id)=(0) is not present in table "ers_reimbursement_type".
+2020-10-20 14:30:07 ERROR ReimbursementDao:132 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_reimbursement" violates foreign key constraint "ers_reimbursement_reimb_type_id_fkey"
+  Detail: Key (reimb_type_id)=(0) is not present in table "ers_reimbursement_type".
+2020-10-20 14:51:01 ERROR ReimbursementDao:34 - java.sql.SQLException: The url cannot be null
+2020-10-20 14:51:01 ERROR ReimbursementDao:34 - java.sql.SQLException: The url cannot be null
+2020-10-20 14:51:01 ERROR ReimbursementDao:74 - java.sql.SQLException: The url cannot be null
+2020-10-20 14:51:01 ERROR ReimbursementDao:132 - java.sql.SQLException: The url cannot be null
+2020-10-20 19:11:42 ERROR UserDao:93 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_users" violates foreign key constraint "ers_users_user_role_id_fkey"
+  Detail: Key (user_role_id)=(0) is not present in table "ers_user_roles".
+2020-10-20 19:18:44 ERROR ReimbursementDao:108 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_reimbursement" violates foreign key constraint "ers_reimbursement_reimb_status_id_fkey"
+  Detail: Key (reimb_status_id)=(0) is not present in table "ers_reimbursement_status".
+2020-10-20 19:20:32 ERROR ReimbursementDao:108 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_reimbursement" violates foreign key constraint "ers_reimbursement_reimb_status_id_fkey"
+  Detail: Key (reimb_status_id)=(0) is not present in table "ers_reimbursement_status".
+2020-10-20 19:22:52 ERROR ReimbursementDao:74 - java.sql.SQLException: The url cannot be null
+2020-10-20 19:23:33 ERROR UserDao:93 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_users" violates foreign key constraint "ers_users_user_role_id_fkey"
+  Detail: Key (user_role_id)=(0) is not present in table "ers_user_roles".
+2020-10-20 19:24:38 ERROR UserDao:71 - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "ers_users_ers_username_key"
+  Detail: Key (ers_username)=(Testman2) already exists.
+2020-10-20 21:36:08 ERROR ReimbursementDao:41 - java.sql.SQLException: The url cannot be null
+2020-10-22 14:40:13 ERROR ReimbursementDao:61 - java.sql.SQLException: The url cannot be null
+2020-10-22 14:45:23 ERROR UserDao:72 - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "ers_users_ers_username_key"
+  Detail: Key (ers_username)=(Testman2) already exists.
+2020-10-22 14:46:03 ERROR UserDao:72 - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "ers_users_ers_username_key"
+  Detail: Key (ers_username)=(Testman2) already exists.
+2020-10-23 15:07:46 ERROR UserDao:60 - java.sql.SQLException: The url cannot be null
+2020-10-23 15:10:04 ERROR UserDao:60 - java.sql.SQLException: The url cannot be null
+2020-10-23 15:11:05 ERROR UserDao:60 - org.postgresql.util.PSQLException: The column name user_role was not found in this ResultSet.

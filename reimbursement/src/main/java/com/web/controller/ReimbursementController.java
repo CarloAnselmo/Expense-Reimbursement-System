@@ -38,6 +38,18 @@ public class ReimbursementController {
 		} catch (IOException e) {
 		}
 	}
+	
+	public void sendSpecificData(HttpServletRequest req, HttpServletResponse res) {
+		res.setContentType("text/json");
+		String name = req.getParameter("name");
+		List<ReimbursementDTO> reimbursements = rs.viewUserReimbursements(name);
+		try {
+			res.getWriter().println(new ObjectMapper().writeValueAsString(reimbursements));
+		} catch (IOException e) {
+			e.printStackTrace();
+			logger.error(e);
+		}
+	}
 
 	public void removeReimbursement(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		String numberString = req.getParameter("id");

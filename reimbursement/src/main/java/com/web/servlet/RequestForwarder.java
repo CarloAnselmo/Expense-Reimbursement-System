@@ -30,6 +30,9 @@ public class RequestForwarder {
 		case "/reimbursement/allR.json":
 			new ReimbursementController().sendAllData(res);
 			break;
+		case "/reimbursement/specR.json":
+			new ReimbursementController().sendSpecificData(req, res);
+			break;
 		case "/reimbursement/removed.json":
 			new ReimbursementController().removeReimbursement(req, res);
 			break;

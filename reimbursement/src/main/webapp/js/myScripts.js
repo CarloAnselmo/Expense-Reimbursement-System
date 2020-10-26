@@ -34,8 +34,14 @@ async function loginFunction() {
   if (currentUser !== null) {
     username = currentUser.username;
     role = currentUser.role;
+    firstname = currentUser.firstname;
+    lastname = currentUser.lastname;
+    userid = currentUser.id;
     localStorage.setItem("key", username);
     localStorage.setItem("key2", role);
+    localStorage.setItem("key3", firstname);
+    localStorage.setItem("key4", lastname);
+    localStorage.setItem("key5", userid);
     alert(
       "Welcome, " + currentUser.username + ".\nYour role: " + currentUser.role
     );

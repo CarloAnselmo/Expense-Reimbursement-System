@@ -159,7 +159,7 @@ public class ReimbursementDao implements DaoContract<ReimbursementDTO, Integer, 
 	public int create(ReimbursementDTO t) {
 		int created = 0;
 		try (Connection conn = ConnectionUtil.getInstance().getConnection()) {
-			String sql = "insert into ers_reimbursement (reimb_amount, reimb_description, reimb_receipt, reimb_author, reimb_type_id) values (?,?,?,1,?)";
+			String sql = "insert into ers_reimbursement (reimb_amount, reimb_description, reimb_receipt, reimb_author, reimb_type_id) values (?,?,?,?,?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setDouble(1, t.getAmount());
 			ps.setString(2, t.getDescription());
@@ -168,8 +168,8 @@ public class ReimbursementDao implements DaoContract<ReimbursementDTO, Integer, 
 			} else {
 				ps.setBinaryStream(3, t.getReceipt());
 			}
-//			ps.setInt(4, t.getAuthor_id());
-			ps.setInt(4, t.getType_id());
+			ps.setInt(4, t.getAuthor_id());
+			ps.setInt(5, t.getType_id());
 			created = ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {

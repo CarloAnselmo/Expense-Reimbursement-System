@@ -18,12 +18,11 @@ public class ReimbursementDao implements DaoContract<ReimbursementDTO, Integer, 
 	
 	final static Logger logger = Logger.getLogger(ReimbursementDao.class);
 	
-//	public static void main(String[] args) {
-//		ReimbursementDao dao = new ReimbursementDao();
-//		List<ReimbursementDTO> lhg = dao.findByName("carlo");
-//		for(ReimbursementDTO s : lhg)
-//			System.out.println(lhg.size());
-//	}
+	public static void main(String[] args) {
+		ReimbursementDao dao = new ReimbursementDao();
+		int updated = dao.approveRequest(4);
+		System.out.println(updated);
+	}
 	
 	@Override
 	public List<ReimbursementDTO> findAll() {
@@ -138,14 +137,27 @@ public class ReimbursementDao implements DaoContract<ReimbursementDTO, Integer, 
 		return updated;
 	}
 	
-	@Override
-	public int updateStatus(Integer i, Integer i2) {
+	public int approveRequest(Integer i) {
 		int updated = 0;
 		try (Connection conn = ConnectionUtil.getInstance().getConnection()) {
-			String sql = "update ers_reimbursement set reimb_status_id=? where reimb_id=?";
+			String sql = "call approve(?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, i);
-			ps.setInt(2, i2);
+			updated = ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			logger.error(e);
+			e.printStackTrace();
+		}
+		return updated;
+	}
+	
+	public int denyRequest(Integer i) {
+		int updated = 0;
+		try (Connection conn = ConnectionUtil.getInstance().getConnection()) {
+			String sql = "call deny(?)";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, i);
 			updated = ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
@@ -197,6 +209,12 @@ public class ReimbursementDao implements DaoContract<ReimbursementDTO, Integer, 
 	
 	@Override
 	public ReimbursementDTO findByNamePass(String s, String s2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ReimbursementDTO findByNameSingle(String s) {
 		// TODO Auto-generated method stub
 		return null;
 	}

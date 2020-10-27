@@ -44,6 +44,26 @@ public class UserDao implements DaoContract<UserDTO, Integer, String> {
 	}
 
 	@Override
+	public UserDTO findByNameSingle(String s) {
+		UserDTO u = null;
+		String sql = "select * from complete_users where ers_username = ?";
+		try (Connection conn = ConnectionUtil.getInstance().getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, s);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				u = new UserDTO(rs.getInt("ers_users_id"), rs.getString("ers_username"), rs.getString("ers_password"),
+						rs.getString("user_first_name"), rs.getString("user_last_name"), rs.getString("user_email"),
+						rs.getString("user_role"));
+			}
+		} catch (SQLException e) {
+			logger.error(e);
+			e.printStackTrace();
+		}
+		return u;
+	}
+	
+	@Override
 	public UserDTO findByNamePass(String s, String s2) {
 		UserDTO u = null;
 		String sql = "select * from complete_users where ers_username = ? and ers_password = md5(?||?||'cool');";
@@ -130,21 +150,15 @@ public class UserDao implements DaoContract<UserDTO, Integer, String> {
 	}
 
 	@Override
-	public List<UserDTO> findByName(String s) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<UserDTO> findByStatus(String s) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int updateStatus(Integer i, Integer i2) {
+	public List<UserDTO> findByName(String s) {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 }

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.web.model.ReimbursementDTO;
 import com.web.model.UserDTO;
 import com.web.repo.UserDao;
 import com.web.service.UserService;
@@ -36,6 +37,25 @@ public class UserController {
 		} catch (IOException e) {
 			e.printStackTrace();
 			logger.error(e);
+		}
+	}
+	
+	public void register(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		try {
+			UserDTO u = new ObjectMapper().readValue(req.getInputStream(), UserDTO.class);
+			System.out.println(u);
+			try {
+				int userResult = us.registerEmployee(u);
+				res.getWriter().println("the user was created");
+			} catch (Exception e) {
+				e.printStackTrace();
+				logger.error(e);
+				res.getWriter().println("the user was not created");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			logger.error(e);
+			res.getWriter().println("something went wrong");
 		}
 	}
 

@@ -68,7 +68,7 @@ public class ReimbursementDaoTester {
 	
 	@Test
 	public void updateReimbursementStatus() {
-		int update = rd.updateStatus(3, 1);
+		int update = rd.approveRequest(3, 1);
 		assertEquals(rd.findById(1).getStatus(), "approved");
 	}
 		

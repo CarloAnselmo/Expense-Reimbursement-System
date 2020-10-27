@@ -47,8 +47,6 @@ function renderTable(reimbursements) {
     renderTable(json);
   }
   
-alert(`${localStorage.getItem("key5")} ${localStorage.getItem("key")}`);
-
 document.getElementById('submitR').addEventListener('click', addReimbursement);
 
 async function addReimbursement() {
@@ -56,7 +54,7 @@ async function addReimbursement() {
       amount:document.getElementById('amountF').value,
       description:document.getElementById('descriptionF').value,
       type_id:document.getElementById('categoriesF').value,
-      author_id:localStorage.getItem("key5")
+      author:localStorage.getItem("key")
     }
     const fetched = await fetch('http://localhost:8080/reimbursement/empReim.json', {
       method:'post',

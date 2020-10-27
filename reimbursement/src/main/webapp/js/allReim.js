@@ -42,17 +42,19 @@ function renderTable(reimbursements) {
   renderTable
   );
 
-document.getElementById('submitR').addEventListener('click', addReimbursement);
-
-async function addReimbursement() {
-    const reimbursement = {
-      amount:document.getElementById('amountF').value,
-      description:document.getElementById('descriptionF').value,
-      type_id:document.getElementById('categoriesF').value,
+  // ----------------------------------------- Employee registration -----------------------------------------
+document.getElementById('registerU').addEventListener('click', registerUser);
+async function registerUser() {
+    const user = {
+      username:document.getElementById('usernameNU').value,
+      password:document.getElementById('passwordNU').value,
+      firstname:document.getElementById('firstnameNU').value,
+      lastname:document.getElementById('lastnameNU').value,
+      email:document.getElementById('emailNU').value
     }
-    const fetched = await fetch('http://localhost:8080/reimbursement/empReim.json', {
+    const fetched = await fetch('http://localhost:8080/reimbursement/register.json', {
       method:'post',
-      body: JSON.stringify(reimbursement)
+      body: JSON.stringify(user)
     });
     const json = await fetched.text();
     console.log(json);
@@ -60,11 +62,13 @@ async function addReimbursement() {
     asyncFetch("http://localhost:8080/reimbursement/allR.json", renderTable);
   }
   
-  document.getElementById('deleteButton').addEventListener('click', deleteReimbursement);
+  // ----------------------------------------- Approve/Deny Reimbursements -----------------------------------------
+  document.getElementById('approveButton').addEventListener('click', approveReimbursement);
+  document.getElementById('denyButton').addEventListener('click', denyReimbursement);
 
-async function deleteReimbursement() {
-    const reimbId = document.getElementById('reimbId').value
-    const fetched = await fetch("http://localhost:8080/reimbursement/removed.json?id="+reimbId, {
+async function approveReimbursement() {
+    const reimbId = document.getElementById('reimbIdApprove').value
+    const fetched = await fetch("http://localhost:8080/reimbursement/approved.json?approve="+reimbId, {
       method:'post'
     });
     const json = await fetched.text();
@@ -72,3 +76,21 @@ async function deleteReimbursement() {
     const rows = document.getElementById('reimbTableBody').innerHTML='';
     asyncFetch("http://localhost:8080/reimbursement/allR.json", renderTable);
 }
+
+async function denyReimbursement() {
+  const reimbId = document.getElementById('reimbIdDeny').value
+  const fetched = await fetch("http://localhost:8080/reimbursement/denied.json?deny="+reimbId, {
+    method:'post'
+  });
+  const json = await fetched.text();
+  console.log(json);
+  const rows = document.getElementById('reimbTableBody').innerHTML='';
+  asyncFetch("http://localhost:8080/reimbursement/allR.json", renderTable);
+}
+
+// Generating text above employee table
+const tableTop = document.getElementById("empName");
+const text = document.createTextNode(`${localStorage.getItem("key3")} ${localStorage.getItem("key4")}!`);
+tableTop.appendChild(text);
+
+console.log('howdy')

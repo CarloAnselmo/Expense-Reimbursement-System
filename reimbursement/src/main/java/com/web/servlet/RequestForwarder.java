@@ -24,6 +24,9 @@ public class RequestForwarder {
 		case "/reimbursement/verify.json":
 			new UserController().login(req, res);
 			break;
+		case "/reimbursement/register.json":
+			new UserController().register(req, res);
+			break;
 		case "/reimbursement/empReim.json":
 			new ReimbursementController().save(req, res);
 			break;
@@ -35,6 +38,12 @@ public class RequestForwarder {
 			break;
 		case "/reimbursement/removed.json":
 			new ReimbursementController().removeReimbursement(req, res);
+			break;
+		case "/reimbursement/approved.json":
+			new ReimbursementController().approveReimbursement(req, res);
+			break;
+		case "/reimbursement/denied.json":
+			new ReimbursementController().denyReimbursement(req, res);
 			break;
 		}
 	}

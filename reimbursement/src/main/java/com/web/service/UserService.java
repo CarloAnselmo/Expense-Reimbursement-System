@@ -35,5 +35,9 @@ public class UserService {
 	public UserDTO verifyLoginCredentials(String name, String pass) {
 		return udao.findByNamePass(name, pass);
 	}
+	
+	public UserDTO findUserId(String name) {
+		return udao.findByNameSingle(name);
+	}
 
 }

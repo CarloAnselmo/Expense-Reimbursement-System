@@ -3,14 +3,13 @@ package com.web.service;
 import java.util.List;
 
 import com.web.model.ReimbursementDTO;
-import com.web.repo.DaoContract;
 import com.web.repo.ReimbursementDao;
 
 public class ReimbursementService {
 	
-	private DaoContract<ReimbursementDTO, Integer, String> rdao;
+	private ReimbursementDao rdao;
 
-	public ReimbursementService(DaoContract<ReimbursementDTO, Integer, String> rdao) {
+	public ReimbursementService(ReimbursementDao rdao) {
 		super();
 		this.rdao = rdao;
 	}
@@ -55,11 +54,11 @@ public class ReimbursementService {
 	}
 	
 	public int approveReimbursement(Integer i) {
-		return rdao.updateStatus(3, i);
+		return rdao.approveRequest(i);
 	}
 	
 	public int denyReimbursement(Integer i) {
-		return rdao.updateStatus(4, i);
+		return rdao.denyRequest(i);
 	}
 	
 	public int deleteReimbursement(Integer i) {

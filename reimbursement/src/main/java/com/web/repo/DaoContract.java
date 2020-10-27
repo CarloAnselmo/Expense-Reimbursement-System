@@ -10,13 +10,13 @@ public interface DaoContract<T, I, S> {
 	
 	List<T> findByName(S s);
 	
+	T findByNameSingle(S s);
+	
 	List<T> findByStatus(S s);
 	
 	T findByNamePass(S s, S s2);
 	
 	int update(T t);
-	
-	int updateStatus(I i, I i2);
 	
 	int create(T t);
 	

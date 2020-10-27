@@ -8,26 +8,27 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.web.model.ReimbursementDTO;
-import com.web.repo.UserDao;
+import com.web.model.UserDTO;
 import com.web.service.ReimbursementService;
+import com.web.service.UserService;
 
 public class ReimbursementController {
 
 	final static Logger logger = Logger.getLogger(ReimbursementController.class);
 
 	private ReimbursementService rs;
+	private UserService us;
 
-	public ReimbursementController(ReimbursementService rs) {
+	public ReimbursementController(ReimbursementService rs, UserService us) {
 		super();
 		this.rs = rs;
+		this.us = us;
 	}
 
 	public ReimbursementController() {
-		this(new ReimbursementService());
+		this(new ReimbursementService(), new UserService());
 	}
 
 	public void sendAllData(HttpServletResponse res) {
@@ -70,13 +71,60 @@ public class ReimbursementController {
 			res.getWriter().println("Nothing was deleted!");
 			logger.info("User failed to delete an entry");
 		}
-		System.out.println(number);
+		System.out.println(updated);
+	}
+	
+	public void approveReimbursement(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		String numberString = req.getParameter("approve");
+		System.out.println(numberString);
+		int number = 0;
+		try {
+			number = Integer.parseInt(numberString);
+		} catch (Exception e) {
+			res.getWriter().println("You didn't enter a number!");
+			e.printStackTrace();
+			logger.error(e);
+		}
+		int updated = rs.approveReimbursement(number);
+		if (updated > 0) {
+			res.getWriter().println("An entry was approved.");
+			logger.info("Finance manager approved an entry.");
+		} else {
+			res.getWriter().println("Entry not approved.");
+			logger.info("Finance manager failed to approve a valid entry.");
+		}
+		System.out.println(updated);
+	}
+	
+	public void denyReimbursement(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		String numberString = req.getParameter("deny");
+		System.out.println(numberString);
+		int number = 0;
+		try {
+			number = Integer.parseInt(numberString);
+		} catch (Exception e) {
+			res.getWriter().println("You didn't enter a number!");
+			e.printStackTrace();
+			logger.error(e);
+		}
+		int updated = rs.denyReimbursement(number);
+		if (updated > 0) {
+			res.getWriter().println("An entry was denied.");
+			logger.info("Finance manager denied an entry.");
+		} else {
+			res.getWriter().println("Entry not denied.");
+			logger.info("Finance manager failed to deny a valid entry.");
+		}
 		System.out.println(updated);
 	}
 
 	public void save(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		try {
 			ReimbursementDTO r = new ObjectMapper().readValue(req.getInputStream(), ReimbursementDTO.class);
+			System.out.println(r);
+			UserDTO d = us.findUserId(r.getAuthor());
+			System.out.println(d);
+			r.setAuthor_id(d.getId());
 			System.out.println(r);
 			try {
 				int reimResult = rs.submitReimbursement(r);

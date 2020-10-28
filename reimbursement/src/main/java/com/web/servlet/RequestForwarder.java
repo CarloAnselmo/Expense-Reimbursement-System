@@ -14,7 +14,7 @@ public class RequestForwarder {
 		switch (req.getRequestURI()){
 		case "/reimbursement/employee.page":
 			return "html/employeeReimbursements.html";
-		case "/reimbursement/finance.page":
+		case "/reimbursement-0.0.1-SNAPSHOT/finance.page":
 			return "html/financeControl.html";
 		default: 
 			return "html/main.html";
@@ -39,7 +39,6 @@ public class RequestForwarder {
 			new ReimbursementController().sendSpecificData(req, res);
 			break;
 		case "/reimbursement/showPending.json":
-			System.out.println("showing pending");
 			new ReimbursementController().sendPending(res);
 			break;
 		case "/reimbursement/showCompleted.json":

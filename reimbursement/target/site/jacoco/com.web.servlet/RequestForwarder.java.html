@@ -11,41 +11,49 @@ import com.web.controller.UserController;
 <span class="nc" id="L11">public class RequestForwarder {</span>
 
 	public String routes(HttpServletRequest req) {
-<span class="nc" id="L14">		switch (req.getRequestURI()){</span>
-//		case &quot;/reimbursement/employee.page&quot;:
-//			return &quot;html/employeeReimbursements.html&quot;;
+<span class="nc bnc" id="L14" title="All 7 branches missed.">		switch (req.getRequestURI()){</span>
+		case &quot;/reimbursement/employee.page&quot;:
+<span class="nc" id="L16">			return &quot;html/employeeReimbursements.html&quot;;</span>
+		case &quot;/reimbursement/finance.page&quot;:
+<span class="nc" id="L18">			return &quot;html/financeControl.html&quot;;</span>
 		default: 
-<span class="nc" id="L18">			return &quot;html/main.html&quot;;</span>
+<span class="nc" id="L20">			return &quot;html/main.html&quot;;</span>
 		}
 	}
 	
 	public void data(HttpServletRequest req, HttpServletResponse res) throws IOException {
-<span class="nc bnc" id="L23" title="All 25 branches missed.">		switch(req.getRequestURI()) {</span>
+<span class="nc bnc" id="L25" title="All 31 branches missed.">		switch(req.getRequestURI()) {</span>
 		case &quot;/reimbursement/verify.json&quot;:
-<span class="nc" id="L25">			new UserController().login(req, res);</span>
-<span class="nc" id="L26">			break;</span>
+<span class="nc" id="L27">			new UserController().login(req, res);</span>
+<span class="nc" id="L28">			break;</span>
 		case &quot;/reimbursement/register.json&quot;:
-<span class="nc" id="L28">			new UserController().register(req, res);</span>
-<span class="nc" id="L29">			break;</span>
+<span class="nc" id="L30">			new UserController().register(req, res);</span>
+<span class="nc" id="L31">			break;</span>
 		case &quot;/reimbursement/empReim.json&quot;:
-<span class="nc" id="L31">			new ReimbursementController().save(req, res);</span>
-<span class="nc" id="L32">			break;</span>
+<span class="nc" id="L33">			new ReimbursementController().save(req, res);</span>
+<span class="nc" id="L34">			break;</span>
 		case &quot;/reimbursement/allR.json&quot;:
-<span class="nc" id="L34">			new ReimbursementController().sendAllData(res);</span>
-<span class="nc" id="L35">			break;</span>
+<span class="nc" id="L36">			new ReimbursementController().sendAllData(res);</span>
+<span class="nc" id="L37">			break;</span>
 		case &quot;/reimbursement/specR.json&quot;:
-<span class="nc" id="L37">			new ReimbursementController().sendSpecificData(req, res);</span>
-<span class="nc" id="L38">			break;</span>
+<span class="nc" id="L39">			new ReimbursementController().sendSpecificData(req, res);</span>
+<span class="nc" id="L40">			break;</span>
+		case &quot;/reimbursement/showPending.json&quot;:
+<span class="nc" id="L42">			new ReimbursementController().sendPending(res);</span>
+<span class="nc" id="L43">			break;</span>
+		case &quot;/reimbursement/showCompleted.json&quot;:
+<span class="nc" id="L45">			new ReimbursementController().sendComplete(res);</span>
+<span class="nc" id="L46">			break;</span>
 		case &quot;/reimbursement/removed.json&quot;:
-<span class="nc" id="L40">			new ReimbursementController().removeReimbursement(req, res);</span>
-<span class="nc" id="L41">			break;</span>
+<span class="nc" id="L48">			new ReimbursementController().removeReimbursement(req, res);</span>
+<span class="nc" id="L49">			break;</span>
 		case &quot;/reimbursement/approved.json&quot;:
-<span class="nc" id="L43">			new ReimbursementController().approveReimbursement(req, res);</span>
-<span class="nc" id="L44">			break;</span>
+<span class="nc" id="L51">			new ReimbursementController().approveReimbursement(req, res);</span>
+<span class="nc" id="L52">			break;</span>
 		case &quot;/reimbursement/denied.json&quot;:
-<span class="nc" id="L46">			new ReimbursementController().denyReimbursement(req, res);</span>
+<span class="nc" id="L54">			new ReimbursementController().denyReimbursement(req, res);</span>
 			break;
 		}
-<span class="nc" id="L49">	}</span>
+<span class="nc" id="L57">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

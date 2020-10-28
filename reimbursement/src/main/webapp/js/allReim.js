@@ -1,4 +1,10 @@
 
+  // ----------------------------------------- Used to keep manager inside same tab when completing a reimb -----------------------------------------
+
+  let whichTab = 0;
+
+ // ----------------------------------------- Rendering table -----------------------------------------
+
 function renderTable(reimbursements) {
     for (const reimbursement of reimbursements) {
       // Creating new boxes in table to be filled
@@ -40,7 +46,24 @@ function renderTable(reimbursements) {
       // Filling in rest of table
       idTd.innerText = reimbursement.id;
       amountTd.innerText = "$"+reimbursement.amount;
-      submissionTd.innerText = `${reimbursement.submitted.month} ${reimbursement.submitted.dayOfMonth}, ${reimbursement.submitted.year} ${reimbursement.submitted.hour}:${reimbursement.submitted.minute}:${reimbursement.submitted.second}`;
+
+      // This is super ugly, but adds a zero in front of entries that require it.
+      submissionTd.innerText = `${reimbursement.submitted.month} ${reimbursement.submitted.dayOfMonth}, ${reimbursement.submitted.year} `;
+      if(reimbursement.submitted.hour<10) {
+        submissionTd.innerText += `0${reimbursement.submitted.hour}:`
+      } else {
+        submissionTd.innerText += `${reimbursement.submitted.hour}:`
+      }
+      if(reimbursement.submitted.minute<10) {
+        submissionTd.innerText += `0${reimbursement.submitted.minute}:`
+      } else {
+        submissionTd.innerText += `${reimbursement.submitted.minute}:`
+      }
+      if(reimbursement.submitted.second<10) {
+        submissionTd.innerText += `0${reimbursement.submitted.second}`
+      } else {
+        submissionTd.innerText += `${reimbursement.submitted.second}`
+      }
       if(reimbursement.resolved===null) {
         resolutionTd.innerText = reimbursement.resolved;
       } else {
@@ -76,11 +99,13 @@ function renderTable(reimbursements) {
   async function sortTableAll() {
     const rows = document.getElementById('reimbTableBody').innerHTML='';
     asyncFetch("http://localhost:8080/reimbursement/allR.json", renderTable);
+    whichTab = 0;
   }
 
   async function sortTablePending() {
     const rows = document.getElementById('reimbTableBody').innerHTML='';
     asyncFetch("http://localhost:8080/reimbursement/showPending.json", renderTable);
+    whichTab = 1;
   }
 
   async function sortTableCompleted() {
@@ -125,7 +150,11 @@ async function approveReimbursement(approveB) {
     const json = await fetched.text();
     console.log(json);
     const rows = document.getElementById('reimbTableBody').innerHTML='';
-    asyncFetch("http://localhost:8080/reimbursement/allR.json", renderTable);
+    if(whichTab === 1) {
+      asyncFetch("http://localhost:8080/reimbursement/showPending.json", renderTable);
+    } else {
+      asyncFetch("http://localhost:8080/reimbursement/allR.json", renderTable);
+    }
 }
 
 // Deny
@@ -141,7 +170,11 @@ async function denyReimbursement(denyB) {
   const json = await fetched.text();
   console.log(json);
   const rows = document.getElementById('reimbTableBody').innerHTML='';
-  asyncFetch("http://localhost:8080/reimbursement/allR.json", renderTable);
+  if(whichTab === 1) {
+    asyncFetch("http://localhost:8080/reimbursement/showPending.json", renderTable);
+  } else {
+    asyncFetch("http://localhost:8080/reimbursement/allR.json", renderTable);
+  }
 }
 
 // Generating text above employee table

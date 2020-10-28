@@ -37,17 +37,17 @@ public class ReimbursementController {
 		try {
 			res.getWriter().println(new ObjectMapper().writeValueAsString(reimbursements));
 		} catch (IOException e) {
+			logger.error(e);
 		}
 	}
 	
 	public void sendPending(HttpServletResponse res) {
 		res.setContentType("text/json");
 		List<ReimbursementDTO> reimbursements = rs.viewPendingReimbursements();
-		for(ReimbursementDTO r : reimbursements)
-			System.out.println(r);
 		try {
 			res.getWriter().println(new ObjectMapper().writeValueAsString(reimbursements));
 		} catch (IOException e) {
+			logger.error(e);
 		}
 	}
 	
@@ -57,6 +57,7 @@ public class ReimbursementController {
 		try {
 			res.getWriter().println(new ObjectMapper().writeValueAsString(reimbursements));
 		} catch (IOException e) {
+			logger.error(e);
 		}
 	}
 	

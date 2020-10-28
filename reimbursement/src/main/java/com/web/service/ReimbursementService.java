@@ -34,12 +34,12 @@ public class ReimbursementService {
 	}
 	
 	public List<ReimbursementDTO> viewPendingReimbursements() {
-		return rdao.findByStatus("pending");
+		return rdao.findByStatus("Pending");
 	}
 	
 	public List<ReimbursementDTO> viewCompletedReimbursements() {
-		List<ReimbursementDTO> newList = rdao.findByStatus("denied");
-		newList.addAll(rdao.findByStatus("approved"));
+		List<ReimbursementDTO> newList = rdao.findByStatus("Denied");
+		newList.addAll(rdao.findByStatus("Approved"));
 		return newList;
 	}
 	

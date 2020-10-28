@@ -15,6 +15,8 @@ async function logout() {
   localStorage.setItem("key2", null);
   document.getElementById("employeePortal").setAttribute("hidden", "true");
   document.getElementById("financeTools").setAttribute("hidden", "true");
+  document.getElementById("logoutButton").setAttribute("hidden", "true");
+  document.getElementById("logoutBar").setAttribute("hidden", "true");
 }
 
 async function loginFunction() {
@@ -53,6 +55,10 @@ async function loginFunction() {
       document.getElementById("financeTools").removeAttribute("hidden");
       document.getElementById('employeePortal').setAttribute("hidden", "true");
     }
+
+    document.getElementById("logoutButton").removeAttribute("hidden");
+    document.getElementById("logoutBar").removeAttribute("hidden");
+
   } else {
     alert("Invalid credentials!");
   }

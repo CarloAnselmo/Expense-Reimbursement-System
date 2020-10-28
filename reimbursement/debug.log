@@ -190,3 +190,7 @@
 2020-10-27 23:26:25 ERROR ReimbursementDao:80 - java.sql.SQLException: The url cannot be null
 2020-10-27 23:26:25 ERROR ReimbursementDao:80 - java.sql.SQLException: The url cannot be null
 2020-10-27 23:26:25 ERROR ReimbursementDao:60 - java.sql.SQLException: The url cannot be null
+2020-10-28 15:08:22 ERROR UserDao:102 - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "ers_users_ers_username_key"
+  Detail: Key (ers_username)=(Testman2) already exists.
+2020-10-28 15:08:42 ERROR UserDao:102 - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "ers_users_ers_username_key"
+  Detail: Key (ers_username)=(Testman2) already exists.

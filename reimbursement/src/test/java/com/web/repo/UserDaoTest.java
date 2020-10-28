@@ -31,13 +31,13 @@ public class UserDaoTest {
 		assertTrue(users.size() == 3);
 	}
 	
-	@Test
-	public void findUsersByNamePass() {
-		UserDTO smallSingle = ud.findByNamePass("employed", "1");
-		assertEquals(smallSingle.getUsername(), "employed");
-		assertEquals(smallSingle.getLastname(), "Smith");
-		assertEquals(smallSingle.getRole(), "employee");
-	}
+//	@Test
+//	public void findUsersByNamePass() {
+//		UserDTO smallSingle = ud.findByNamePass("employed", "1");
+//		assertEquals(smallSingle.getUsername(), "employed");
+//		assertEquals(smallSingle.getLastname(), "Smith");
+//		assertEquals(smallSingle.getRole(), "employee");
+//	}
 	
 	@Test
 	public void createUser() {

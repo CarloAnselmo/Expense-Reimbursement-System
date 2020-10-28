@@ -40,6 +40,26 @@ public class ReimbursementController {
 		}
 	}
 	
+	public void sendPending(HttpServletResponse res) {
+		res.setContentType("text/json");
+		List<ReimbursementDTO> reimbursements = rs.viewPendingReimbursements();
+		for(ReimbursementDTO r : reimbursements)
+			System.out.println(r);
+		try {
+			res.getWriter().println(new ObjectMapper().writeValueAsString(reimbursements));
+		} catch (IOException e) {
+		}
+	}
+	
+	public void sendComplete(HttpServletResponse res) {
+		res.setContentType("text/json");
+		List<ReimbursementDTO> reimbursements = rs.viewCompletedReimbursements();
+		try {
+			res.getWriter().println(new ObjectMapper().writeValueAsString(reimbursements));
+		} catch (IOException e) {
+		}
+	}
+	
 	public void sendSpecificData(HttpServletRequest req, HttpServletResponse res) {
 		res.setContentType("text/json");
 		String name = req.getParameter("name");

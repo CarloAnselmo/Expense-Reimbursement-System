@@ -1,10 +1,7 @@
-// $(document).ready(function () {
-//   $('#empTableFull').DataTable();
-//   $('.dataTables_length').addClass('bs-select');
-//   });
 
 function renderTable(reimbursements) {
     for (const reimbursement of reimbursements) {
+      // Creating new boxes in table to be filled
       const tr = document.createElement("tr");
       const buttonTd = document.createElement("td");
       const idTd = document.createElement("td");
@@ -18,6 +15,7 @@ function renderTable(reimbursements) {
       const statusTd = document.createElement("td");
       const categoryTd = document.createElement("td");
 
+      // Approve button
       const approveButton = document.createElement("button");
       approveButton.innerHTML = "A";
       approveButton.addEventListener('click', function(){approveReimbursement(reimbursement.id)});
@@ -27,6 +25,19 @@ function renderTable(reimbursements) {
         approveButton.setAttribute("hidden", "true");
       }
       buttonTd.append(approveButton);
+
+      // Deny button
+      const denyButton = document.createElement("button");
+      denyButton.innerHTML = "D";
+      denyButton.addEventListener('click', function(){denyReimbursement(reimbursement.id)});
+      denyButton.className = "btn btn-danger btn-sm";
+      denyButton.id = reimbursement.id;
+      if(reimbursement.status!=="Pending") {
+        denyButton.setAttribute("hidden", "true");
+      }
+      buttonTd.append(denyButton);
+
+      // Filling in rest of table
       idTd.innerText = reimbursement.id;
       amountTd.innerText = "$"+reimbursement.amount;
       submissionTd.innerText = `${reimbursement.submitted.month} ${reimbursement.submitted.dayOfMonth}, ${reimbursement.submitted.year} ${reimbursement.submitted.hour}:${reimbursement.submitted.minute}:${reimbursement.submitted.second}`;
@@ -57,6 +68,26 @@ function renderTable(reimbursements) {
   renderTable
   );
 
+  // ----------------------------------------- Render table buttons -----------------------------------------
+  document.getElementById('sortAll').addEventListener('click', sortTableAll);
+  document.getElementById('sortPending').addEventListener('click', sortTablePending);
+  document.getElementById('sortCompleted').addEventListener('click', sortTableCompleted);
+
+  async function sortTableAll() {
+    const rows = document.getElementById('reimbTableBody').innerHTML='';
+    asyncFetch("http://localhost:8080/reimbursement/allR.json", renderTable);
+  }
+
+  async function sortTablePending() {
+    const rows = document.getElementById('reimbTableBody').innerHTML='';
+    asyncFetch("http://localhost:8080/reimbursement/showPending.json", renderTable);
+  }
+
+  async function sortTableCompleted() {
+    const rows = document.getElementById('reimbTableBody').innerHTML='';
+    asyncFetch("http://localhost:8080/reimbursement/showCompleted.json", renderTable);
+  }
+
   // ----------------------------------------- Employee registration -----------------------------------------
 document.getElementById('registerU').addEventListener('click', registerUser);
 async function registerUser() {
@@ -78,8 +109,8 @@ async function registerUser() {
   }
   
   // ----------------------------------------- Approve/Deny Reimbursements -----------------------------------------
-  document.getElementById('approveButton').addEventListener('click', approveReimbursement);
-  document.getElementById('denyButton').addEventListener('click', denyReimbursement);
+  // document.getElementById('approveButton').addEventListener('click', approveReimbursement);
+  // document.getElementById('denyButton').addEventListener('click', denyReimbursement);
 
 // Approve
 async function approveReimbursement(approveB) {
@@ -98,9 +129,9 @@ async function approveReimbursement(approveB) {
 }
 
 // Deny
-async function denyReimbursement() {
+async function denyReimbursement(denyB) {
   const reimbursement = {
-    id:document.getElementById('reimbIdDeny').value,
+    id:denyB,
     resolver:localStorage.getItem("key")
   }
   const fetched = await fetch('http://localhost:8080/reimbursement/denied.json', {

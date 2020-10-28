@@ -2,6 +2,7 @@ package com.web.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
 
 import java.util.List;
 
@@ -11,15 +12,18 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import com.web.model.ReimbursementDTO;
+import com.web.repo.UserDao;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ReimbursementServiceTest {
 	
+	private UserDao daoMock;
 	private ReimbursementService rs;
 
 	@Before
 	public void setup() {
 		rs = new ReimbursementService();
+		daoMock = mock(UserDao.class);
 	}
 	
 	@Test

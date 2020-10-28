@@ -38,6 +38,13 @@ public class RequestForwarder {
 		case "/reimbursement/specR.json":
 			new ReimbursementController().sendSpecificData(req, res);
 			break;
+		case "/reimbursement/showPending.json":
+			System.out.println("showing pending");
+			new ReimbursementController().sendPending(res);
+			break;
+		case "/reimbursement/showCompleted.json":
+			new ReimbursementController().sendComplete(res);
+			break;
 		case "/reimbursement/removed.json":
 			new ReimbursementController().removeReimbursement(req, res);
 			break;

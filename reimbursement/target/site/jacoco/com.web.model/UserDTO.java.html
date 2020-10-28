@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">reimbursement</a> &gt; <a href="index.source.html" class="el_package">com.web.model</a> &gt; <span class="el_source">UserDTO.java</span></div><h1>UserDTO.java</h1><pre class="source lang-java linenums">package com.web.model;
+
+public class UserDTO {
+	
+	private int id;
+	private String username;
+	private String password;
+	private String firstname;
+	private String lastname;
+	private String email;
+	
+	// Used in the retrieval of data (sensitive)
+	private int role_id;
+	
+	// Used in the creation, updating, and deletion of data (not sensitive)
+	private String role;
+
+	public UserDTO() {
+<span class="nc" id="L19">		super();</span>
+<span class="nc" id="L20">	}</span>
+
+	// Constructor used for retrieving data
+	public UserDTO(int id, String username, String password, String firstname, String lastname, String email, String role) {
+<span class="nc" id="L24">		super();</span>
+<span class="nc" id="L25">		this.id = id;</span>
+<span class="nc" id="L26">		this.username = username;</span>
+<span class="nc" id="L27">		this.password = password;</span>
+<span class="nc" id="L28">		this.firstname = firstname;</span>
+<span class="nc" id="L29">		this.lastname = lastname;</span>
+<span class="nc" id="L30">		this.email = email;</span>
+<span class="nc" id="L31">		this.role = role;</span>
+<span class="nc" id="L32">	}</span>
+	
+	// Constructor used for submitting data
+	public UserDTO(String username, String password, String firstname, String lastname, String email) {
+<span class="fc" id="L36">		super();</span>
+<span class="fc" id="L37">		this.username = username;</span>
+<span class="fc" id="L38">		this.password = password;</span>
+<span class="fc" id="L39">		this.firstname = firstname;</span>
+<span class="fc" id="L40">		this.lastname = lastname;</span>
+<span class="fc" id="L41">		this.email = email;</span>
+<span class="fc" id="L42">	}</span>
+
+	public int getId() {
+<span class="nc" id="L45">		return id;</span>
+	}
+
+	public void setId(int id) {
+<span class="fc" id="L49">		this.id = id;</span>
+<span class="fc" id="L50">	}</span>
+
+	public String getUsername() {
+<span class="nc" id="L53">		return username;</span>
+	}
+
+	public void setUsername(String username) {
+<span class="nc" id="L57">		this.username = username;</span>
+<span class="nc" id="L58">	}</span>
+
+	public String getPassword() {
+<span class="nc" id="L61">		return password;</span>
+	}
+
+	public void setPassword(String password) {
+<span class="nc" id="L65">		this.password = password;</span>
+<span class="nc" id="L66">	}</span>
+
+	public String getFirstname() {
+<span class="nc" id="L69">		return firstname;</span>
+	}
+
+	public void setFirstname(String firstname) {
+<span class="nc" id="L73">		this.firstname = firstname;</span>
+<span class="nc" id="L74">	}</span>
+
+	public String getLastname() {
+<span class="nc" id="L77">		return lastname;</span>
+	}
+
+	public void setLastname(String lastname) {
+<span class="nc" id="L81">		this.lastname = lastname;</span>
+<span class="nc" id="L82">	}</span>
+
+	public String getEmail() {
+<span class="nc" id="L85">		return email;</span>
+	}
+
+	public void setEmail(String email) {
+<span class="nc" id="L89">		this.email = email;</span>
+<span class="nc" id="L90">	}</span>
+
+	public int getRole_id() {
+<span class="nc" id="L93">		return role_id;</span>
+	}
+
+	public void setRole_id(int role_id) {
+<span class="fc" id="L97">		this.role_id = role_id;</span>
+<span class="fc" id="L98">	}</span>
+	
+	public String getRole() {
+<span class="nc" id="L101">		return role;</span>
+	}
+
+	public void setRole(String role) {
+<span class="nc" id="L105">		this.role = role;</span>
+<span class="nc" id="L106">	}</span>
+
+	@Override
+	public String toString() {
+<span class="nc" id="L110">		return &quot;UserDTO [id=&quot; + id + &quot;, username=&quot; + username + &quot;, password=&quot; + password + &quot;, firstname=&quot; + firstname</span>
+<span class="nc" id="L111">				+ &quot;, lastname=&quot; + lastname + &quot;, email=&quot; + email + &quot;, role_id=&quot; + role_id + &quot;, role=&quot; + role + &quot;]&quot;;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

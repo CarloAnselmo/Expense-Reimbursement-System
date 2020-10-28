@@ -43,8 +43,6 @@ public class ReimbursementService {
 		return newList;
 	}
 	
-	// --- Test below services, then move onto user service layer + testing
-	
 	public int submitReimbursement(ReimbursementDTO t) throws Exception {
 		int result = rdao.create(t);
 		if(result==0) {
@@ -53,12 +51,12 @@ public class ReimbursementService {
 		return result;
 	}
 	
-	public int approveReimbursement(Integer i) {
-		return rdao.approveRequest(i);
+	public int approveReimbursement(Integer i, Integer i2) {
+		return rdao.approveRequest(i, i2);
 	}
 	
-	public int denyReimbursement(Integer i) {
-		return rdao.denyRequest(i);
+	public int denyReimbursement(Integer i, Integer i2) {
+		return rdao.denyRequest(i, i2);
 	}
 	
 	public int deleteReimbursement(Integer i) {

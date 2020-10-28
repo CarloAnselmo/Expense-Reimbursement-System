@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ReimbursementDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">reimbursement</a> &gt; <a href="index.source.html" class="el_package">com.web.model</a> &gt; <span class="el_source">ReimbursementDTO.java</span></div><h1>ReimbursementDTO.java</h1><pre class="source lang-java linenums">package com.web.model;
+
+import java.io.InputStream;
+import java.time.LocalDateTime;
+
+public class ReimbursementDTO {
+	
+	private int id;
+	private double amount;
+	private LocalDateTime submitted;
+	private LocalDateTime resolved;
+	private String description;
+	private InputStream receipt;
+	
+	// Used in the retrieval of data (sensitive)
+	private String author;
+	private String resolver;
+	private String status;
+	private String type;
+	
+	// Used in the creation, updating, and deletion of data (not sensitive)
+	private int author_id;
+	private int resolver_id;
+	private int status_id;
+	private int type_id;
+	
+	public ReimbursementDTO() {
+<span class="nc" id="L28">		super();</span>
+<span class="nc" id="L29">	}</span>
+
+	public ReimbursementDTO(int id, double amount, LocalDateTime submitted, LocalDateTime resolved, String description,
+			InputStream receipt, String author, String resolver, String status, String type) {
+<span class="nc" id="L33">		super();</span>
+<span class="nc" id="L34">		this.id = id;</span>
+<span class="nc" id="L35">		this.amount = amount;</span>
+<span class="nc" id="L36">		this.submitted = submitted;</span>
+<span class="nc" id="L37">		this.resolved = resolved;</span>
+<span class="nc" id="L38">		this.description = description;</span>
+<span class="nc" id="L39">		this.receipt = receipt;</span>
+<span class="nc" id="L40">		this.author = author;</span>
+<span class="nc" id="L41">		this.resolver = resolver;</span>
+<span class="nc" id="L42">		this.status = status;</span>
+<span class="nc" id="L43">		this.type = type;</span>
+<span class="nc" id="L44">	}</span>
+	
+	// Simple constructor for standard employee input
+	public ReimbursementDTO(double amount, String description, InputStream receipt, String author, String type) {
+<span class="nc" id="L48">		super();</span>
+<span class="nc" id="L49">		this.amount = amount;</span>
+<span class="nc" id="L50">		this.description = description;</span>
+<span class="nc" id="L51">		this.receipt = receipt;</span>
+<span class="nc" id="L52">		this.author = author;</span>
+<span class="nc" id="L53">		this.type = type;</span>
+<span class="nc" id="L54">	}</span>
+	
+	// Simple constructor for standard employee output
+	public ReimbursementDTO(double amount, String description, InputStream receipt, int author_id, int type_id) {
+<span class="fc" id="L58">		super();</span>
+<span class="fc" id="L59">		this.amount = amount;</span>
+<span class="fc" id="L60">		this.description = description;</span>
+<span class="fc" id="L61">		this.receipt = receipt;</span>
+<span class="fc" id="L62">		this.author_id = author_id;</span>
+<span class="fc" id="L63">		this.type_id = type_id;</span>
+<span class="fc" id="L64">	}</span>
+
+	public int getId() {
+<span class="nc" id="L67">		return id;</span>
+	}
+
+	public void setId(int id) {
+<span class="nc" id="L71">		this.id = id;</span>
+<span class="nc" id="L72">	}</span>
+
+	public double getAmount() {
+<span class="nc" id="L75">		return amount;</span>
+	}
+
+	public void setAmount(double amount) {
+<span class="nc" id="L79">		this.amount = amount;</span>
+<span class="nc" id="L80">	}</span>
+
+	public LocalDateTime getSubmitted() {
+<span class="nc" id="L83">		return submitted;</span>
+	}
+
+	public void setSubmitted(LocalDateTime submitted) {
+<span class="nc" id="L87">		this.submitted = submitted;</span>
+<span class="nc" id="L88">	}</span>
+
+	public LocalDateTime getResolved() {
+<span class="nc" id="L91">		return resolved;</span>
+	}
+
+	public void setResolved(LocalDateTime resolved) {
+<span class="nc" id="L95">		this.resolved = resolved;</span>
+<span class="nc" id="L96">	}</span>
+
+	public String getDescription() {
+<span class="nc" id="L99">		return description;</span>
+	}
+
+	public void setDescription(String description) {
+<span class="nc" id="L103">		this.description = description;</span>
+<span class="nc" id="L104">	}</span>
+
+	public InputStream getReceipt() {
+<span class="nc" id="L107">		return receipt;</span>
+	}
+
+	public void setReceipt(InputStream receipt) {
+<span class="nc" id="L111">		this.receipt = receipt;</span>
+<span class="nc" id="L112">	}</span>
+
+	public String getAuthor() {
+<span class="nc" id="L115">		return author;</span>
+	}
+
+	public void setAuthor(String author) {
+<span class="nc" id="L119">		this.author = author;</span>
+<span class="nc" id="L120">	}</span>
+
+	public String getResolver() {
+<span class="nc" id="L123">		return resolver;</span>
+	}
+
+	public void setResolver(String resolver) {
+<span class="nc" id="L127">		this.resolver = resolver;</span>
+<span class="nc" id="L128">	}</span>
+
+	public String getStatus() {
+<span class="nc" id="L131">		return status;</span>
+	}
+
+	public void setStatus(String status) {
+<span class="nc" id="L135">		this.status = status;</span>
+<span class="nc" id="L136">	}</span>
+
+	public String getType() {
+<span class="nc" id="L139">		return type;</span>
+	}
+
+	public void setType(String type) {
+<span class="nc" id="L143">		this.type = type;</span>
+<span class="nc" id="L144">	}</span>
+
+	public int getAuthor_id() {
+<span class="nc" id="L147">		return author_id;</span>
+	}
+
+	public void setAuthor_id(int author_id) {
+<span class="nc" id="L151">		this.author_id = author_id;</span>
+<span class="nc" id="L152">	}</span>
+
+	public int getResolver_id() {
+<span class="nc" id="L155">		return resolver_id;</span>
+	}
+
+	public void setResolver_id(int resolver_id) {
+<span class="nc" id="L159">		this.resolver_id = resolver_id;</span>
+<span class="nc" id="L160">	}</span>
+
+	public int getStatus_id() {
+<span class="nc" id="L163">		return status_id;</span>
+	}
+
+	public void setStatus_id(int status_id) {
+<span class="nc" id="L167">		this.status_id = status_id;</span>
+<span class="nc" id="L168">	}</span>
+
+	public int getType_id() {
+<span class="nc" id="L171">		return type_id;</span>
+	}
+
+	public void setType_id(int type_id) {
+<span class="nc" id="L175">		this.type_id = type_id;</span>
+<span class="nc" id="L176">	}</span>
+
+	@Override
+	public String toString() {
+<span class="nc" id="L180">		return &quot;ReimbursementDTO [id=&quot; + id + &quot;, amount=&quot; + amount + &quot;, submitted=&quot; + submitted + &quot;, resolved=&quot;</span>
+<span class="nc" id="L181">				+ resolved + &quot;, description=&quot; + description + &quot;, receipt=&quot; + receipt + &quot;, author=&quot; + author</span>
+<span class="nc" id="L182">				+ &quot;, resolver=&quot; + resolver + &quot;, status=&quot; + status + &quot;, type=&quot; + type + &quot;, author_id=&quot; + author_id</span>
+<span class="nc" id="L183">				+ &quot;, resolver_id=&quot; + resolver_id + &quot;, status_id=&quot; + status_id + &quot;, type_id=&quot; + type_id + &quot;]&quot;;</span>
+	}
+
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

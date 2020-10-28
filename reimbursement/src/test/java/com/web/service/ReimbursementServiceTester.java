@@ -59,17 +59,17 @@ public class ReimbursementServiceTester {
 		assertEquals(create, 1);
 	}
 	
-	@Test
-	public void approveReimbursementTest() {
-		int update = rs.approveReimbursement(1);
-		assertEquals(update, 1);
-	}
-	
-	@Test
-	public void denyReimbursementTest() {
-		int update = rs.denyReimbursement(1);
-		assertEquals(update, 1);
-	}
+//	@Test
+//	public void approveReimbursementTest() {
+//		int update = rs.approveReimbursement(1);
+//		assertEquals(update, 1);
+//	}
+//	
+//	@Test
+//	public void denyReimbursementTest() {
+//		int update = rs.denyReimbursement(1);
+//		assertEquals(update, 1);
+//	}
 	
 //	@Runwith(Suite.class)
 //

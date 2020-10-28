@@ -18,11 +18,11 @@ public class ReimbursementDao implements DaoContract<ReimbursementDTO, Integer, 
 	
 	final static Logger logger = Logger.getLogger(ReimbursementDao.class);
 	
-	public static void main(String[] args) {
-		ReimbursementDao dao = new ReimbursementDao();
-		int updated = dao.approveRequest(4);
-		System.out.println(updated);
-	}
+//	public static void main(String[] args) {
+//		ReimbursementDao dao = new ReimbursementDao();
+//		int updated = dao.approveRequest(4);
+//		System.out.println(updated);
+//	}
 	
 	@Override
 	public List<ReimbursementDTO> findAll() {
@@ -137,12 +137,13 @@ public class ReimbursementDao implements DaoContract<ReimbursementDTO, Integer, 
 		return updated;
 	}
 	
-	public int approveRequest(Integer i) {
+	public int approveRequest(Integer i, Integer i2) {
 		int updated = 0;
 		try (Connection conn = ConnectionUtil.getInstance().getConnection()) {
-			String sql = "call approve(?)";
+			String sql = "call approve(?, ?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, i);
+			ps.setInt(2, i2);
 			updated = ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
@@ -152,12 +153,13 @@ public class ReimbursementDao implements DaoContract<ReimbursementDTO, Integer, 
 		return updated;
 	}
 	
-	public int denyRequest(Integer i) {
+	public int denyRequest(Integer i, Integer i2) {
 		int updated = 0;
 		try (Connection conn = ConnectionUtil.getInstance().getConnection()) {
-			String sql = "call deny(?)";
+			String sql = "call deny(?, ?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, i);
+			ps.setInt(2, i2);
 			updated = ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {

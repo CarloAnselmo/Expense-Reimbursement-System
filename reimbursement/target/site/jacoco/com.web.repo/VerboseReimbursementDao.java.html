@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>VerboseReimbursementDao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">reimbursement</a> &gt; <a href="index.source.html" class="el_package">com.web.repo</a> &gt; <span class="el_source">VerboseReimbursementDao.java</span></div><h1>VerboseReimbursementDao.java</h1><pre class="source lang-java linenums">package com.web.repo;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.util.LinkedList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import com.web.model.Reimbursement;
+import com.web.model.ReimbursementStatus;
+import com.web.model.ReimbursementType;
+import com.web.model.User;
+import com.web.model.UserRole;
+import com.web.util.ConnectionUtil;
+
+<span class="nc" id="L20">public class VerboseReimbursementDao {</span>
+	
+//	final static Logger logger = Logger.getLogger(ReimbursementDao.class);
+//
+//	public static void main(String[] args) {
+//		VerboseReimbursementDao dao = new VerboseReimbursementDao();
+//		List&lt;Reimbursement&gt; tooMuchData = dao.findAll();
+//		for(Reimbursement r : tooMuchData) {
+//			System.out.println(r);
+//		}
+//		System.out.println();
+//		
+//		Reimbursement single = dao.findById(1);
+//		System.out.println(single);
+//	}
+//	
+//	@Override
+//	public List&lt;Reimbursement&gt; findAll() {
+//		List&lt;Reimbursement&gt; reimbursements = new LinkedList&lt;&gt;();
+//		String sql = &quot;select * from reimbursement_all&quot;;
+//		try(Connection conn = ConnectionUtil.getInstance().getConnection()) {
+//			PreparedStatement ps = conn.prepareStatement(sql);
+//			ResultSet rs = ps.executeQuery();
+//			while(rs.next()) {
+//				reimbursements.add(new Reimbursement(rs.getInt(&quot;reimb_id&quot;), rs.getDouble(&quot;reimb_amount&quot;), rs.getObject(&quot;reimb_submitted&quot;, LocalDateTime.class),
+//						rs.getObject(&quot;reimb_resolved&quot;, LocalDateTime.class), rs.getString(&quot;reimb_description&quot;), rs.getBinaryStream(&quot;reimb_receipt&quot;),
+//						new User(rs.getInt(&quot;auth_id&quot;), rs.getString(&quot;auth_username&quot;), rs.getString(&quot;auth_password&quot;), rs.getString(&quot;auth_first_name&quot;), rs.getString(&quot;auth_last_name&quot;), rs.getString(&quot;auth_email&quot;),
+//								new UserRole(rs.getInt(&quot;auth_role_id&quot;), rs.getString(&quot;auth_role&quot;))),
+//						new User(rs.getInt(&quot;resolver_id&quot;), rs.getString(&quot;resolver_username&quot;), rs.getString(&quot;resolver_password&quot;), rs.getString(&quot;resolver_first_name&quot;), rs.getString(&quot;resolver_last_name&quot;), rs.getString(&quot;resolver_email&quot;),
+//								new UserRole(rs.getInt(&quot;resolver_role_id&quot;), rs.getString(&quot;resolver_role&quot;))),
+//						new ReimbursementStatus(rs.getInt(&quot;reimb_status_id&quot;), rs.getString(&quot;reimb_status&quot;)),
+//						new ReimbursementType(rs.getInt(&quot;reimb_type_id&quot;), rs.getString(&quot;reimb_type&quot;))));
+//			}
+//		} catch (SQLException e) {
+//			logger.error(e);
+//			e.printStackTrace();
+//		}
+//		return reimbursements;
+//	}
+//
+//	@Override
+//	public Reimbursement findById(Integer i) {
+//		Reimbursement r = null;
+//		String sql = &quot;select * from reimbursement_all where reimb_id=?&quot;;
+//		try(Connection conn = ConnectionUtil.getInstance().getConnection()) {
+//			PreparedStatement ps = conn.prepareStatement(sql);
+//			ps.setInt(1, i);
+//			ResultSet rs = ps.executeQuery();
+//			while(rs.next()) {
+//				r = new Reimbursement(rs.getInt(&quot;reimb_id&quot;), rs.getDouble(&quot;reimb_amount&quot;), rs.getObject(&quot;reimb_submitted&quot;, LocalDateTime.class),
+//						rs.getObject(&quot;reimb_resolved&quot;, LocalDateTime.class), rs.getString(&quot;reimb_description&quot;), rs.getBinaryStream(&quot;reimb_receipt&quot;),
+//						new User(rs.getInt(&quot;auth_id&quot;), rs.getString(&quot;auth_username&quot;), rs.getString(&quot;auth_password&quot;), rs.getString(&quot;auth_first_name&quot;), rs.getString(&quot;auth_last_name&quot;), rs.getString(&quot;auth_email&quot;),
+//								new UserRole(rs.getInt(&quot;auth_role_id&quot;), rs.getString(&quot;auth_role&quot;))),
+//						new User(rs.getInt(&quot;resolver_id&quot;), rs.getString(&quot;resolver_username&quot;), rs.getString(&quot;resolver_password&quot;), rs.getString(&quot;resolver_first_name&quot;), rs.getString(&quot;resolver_last_name&quot;), rs.getString(&quot;resolver_email&quot;),
+//								new UserRole(rs.getInt(&quot;resolver_role_id&quot;), rs.getString(&quot;resolver_role&quot;))),
+//						new ReimbursementStatus(rs.getInt(&quot;reimb_status_id&quot;), rs.getString(&quot;reimb_status&quot;)),
+//						new ReimbursementType(rs.getInt(&quot;reimb_type_id&quot;), rs.getString(&quot;reimb_type&quot;)));
+//			}
+//		} catch (SQLException e) {
+//			logger.error(e);
+//			e.printStackTrace();
+//		}
+//		return r;
+//	}
+//
+//	@Override
+//	public int update(Reimbursement t) {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
+//
+//	@Override
+//	public int create(Reimbursement t) {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
+//
+//	@Override
+//	public int delete(Integer i) {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
+//
+//	@Override
+//	public List&lt;Reimbursement&gt; findByName(String s) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public Reimbursement findByNamePass(String s, String s2) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public List&lt;Reimbursement&gt; findByStatus(String s) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public int updateStatus(Integer i, Integer i2) {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

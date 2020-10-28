@@ -6,17 +6,19 @@
         <title>All Reimbursements</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="../css/extra.css" rel="stylesheet" />
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="extensions/filter-control/bootstrap-table-filter-control.css">
+        <link href="../css/extra.css" rel="stylesheet" />
     </head>
     <body>
 
-        <h1>Finance Manager All Reimbursement Page</h1>
+        <h1>All Reimbursements</h1>
+        <h3 id="empName">Greetings, </h3>
         <br />
         <br />
         <br />
-        <div class="container-fluid text-center">
+        <!-- <div class="container-fluid text-center">
             <div class="row">
                 <div class="col">
                 </div>
@@ -27,13 +29,16 @@
                 </div>
             </div>
         </div>
-        <br />
+        <br /> -->
         <div class="container-fluid">
             <div class="row">
-                <div class="col">
+                <div class="col-1">
                 </div>
-                <div class="col-8">
-                <table class="table table-striped table-hover table-sm" data-filter-control="true" data-show-search-clear-button="true">
+                <div class="col-10">
+                <button class="btn btn-success btn-sm longee" id="sortAll">Show All</button>
+                <button class="btn btn-warning btn-sm longee" id="sortPending">Show Pending</button>
+                <button class="btn btn-danger btn-sm longee" id="sortCompleted">Show Completed</button>
+                <table class="table table-striped table-hover table-sm table-bordered" data-sortable="true" id="empTableFull">
                     <thead
                     style="background: rgb(255,0,0);
                     background: linear-gradient(122deg, rgba(255,0,0,1) 0%, rgba(255,145,0,1) 100%);"
@@ -54,21 +59,59 @@
                     <tbody id="reimbTableBody"></tbody>
                 </table>
                 </div>
-                <div class="col">
+                <div class="col-1">
                 </div>
             </div>
         </div>
 
-        
+        <div class="container-fluid">
+            <div class="row">
+              <div class="col-1"></div>
+              <div class="col-3">
+                <br />
+                <div id="approveDiv" 
+                style="background-color: white; padding: 10px; border-radius: 10px;">
+                <p>
+                  <u>Pick a number to approve a reimbursement. You cannot approve a
+                    reimbursement that has already been denied:</u>
+                </p>
+                <input type="number" placeholder="number" id="reimbIdApprove" />
+                <input type="submit" value="Submit" id="approveButton" />
+            </div>
+                <br><br>
+                <p>
+                    <u>Pick a number to deny a reimbursement. You cannot deny a
+                      reimbursement that has already been denied:</u>
+                  </p>
+                  <input type="number" placeholder="number" id="reimbIdDeny" />
+                  <input type="submit" value="Submit" id="denyButton" />
+                  <br />
+                  <br />
+                  <p><u>Register a new user</u>:</p>
+                  <input type="text" id="usernameNU" placeholder="Username" />
+                  <br />
+                  <input type="password" id="passwordNU" placeholder="Temporary Password" />
+                  <br />
+                  <input type="text" id="firstnameNU" placeholder="First Name" />
+                  <br />
+                  <input type="text" id="lastnameNU" placeholder="Last Name" />
+                  <br />
+                  <input type="text" id="emailNU" placeholder="Email" />
+                  <br />
+                  <button class="btn btn-primary" id="registerU">Create New Employee</button>
+                  <br />
+              </div>
+              <div class="col-8"></div>
+            </div>
+          </div>
 
 
 
 
 
-        <script src="extensions/filter-control/bootstrap-table-filter-control.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
         <!-- My own scripts -->
-        <script src="../js/reim.js"></script>
+        <script src="../js/allReim.js"></script>
     </body>
 </html>

@@ -12,8 +12,10 @@ public class RequestForwarder {
 
 	public String routes(HttpServletRequest req) {
 		switch (req.getRequestURI()){
-		case "/reimbursement/login.page":
-			return "html/success.html";
+		case "/reimbursement/employee.page":
+			return "html/employeeReimbursements.html";
+		case "/reimbursement/finance.page":
+			return "html/financeControl.html";
 		default: 
 			return "html/main.html";
 		}

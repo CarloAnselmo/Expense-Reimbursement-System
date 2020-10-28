@@ -150,3 +150,42 @@
 2020-10-26 21:41:48 ERROR ReimbursementDao:149 - org.postgresql.util.PSQLException: ERROR: procedure approve(integer) does not exist
   Hint: No procedure matches the given name and argument types. You might need to add explicit type casts.
   Position: 6
+2020-10-27 23:15:31 ERROR ReimbursementDao:150 - org.postgresql.util.PSQLException: ERROR: procedure approve(integer, integer) does not exist
+  Hint: No procedure matches the given name and argument types. You might need to add explicit type casts.
+  Position: 6
+2020-10-27 23:17:59 ERROR ReimbursementDao:190 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:17:59 ERROR ReimbursementDao:206 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:17:59 ERROR ReimbursementDao:40 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:17:59 ERROR ReimbursementDao:100 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:17:59 ERROR ReimbursementDao:60 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:17:59 ERROR ReimbursementDao:80 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:17:59 ERROR ReimbursementDao:100 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:17:59 ERROR UserDao:102 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:17:59 ERROR UserDao:140 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:17:59 ERROR UserDao:40 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:17:59 ERROR UserDao:82 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:17:59 ERROR UserDao:124 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:17:59 ERROR ReimbursementDao:40 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:17:59 ERROR ReimbursementDao:190 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:17:59 ERROR ReimbursementDao:80 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:17:59 ERROR ReimbursementDao:80 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:17:59 ERROR ReimbursementDao:80 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:17:59 ERROR ReimbursementDao:60 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:26:24 ERROR ReimbursementDao:190 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:26:24 ERROR ReimbursementDao:206 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:26:24 ERROR ReimbursementDao:40 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:26:24 ERROR ReimbursementDao:100 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:26:24 ERROR ReimbursementDao:60 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:26:25 ERROR ReimbursementDao:80 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:26:25 ERROR ReimbursementDao:100 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:26:25 ERROR UserDao:102 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:26:25 ERROR UserDao:140 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:26:25 ERROR UserDao:40 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:26:25 ERROR UserDao:82 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:26:25 ERROR UserDao:124 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:26:25 ERROR ReimbursementDao:40 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:26:25 ERROR ReimbursementDao:190 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:26:25 ERROR ReimbursementDao:80 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:26:25 ERROR ReimbursementDao:80 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:26:25 ERROR ReimbursementDao:80 - java.sql.SQLException: The url cannot be null
+2020-10-27 23:26:25 ERROR ReimbursementDao:60 - java.sql.SQLException: The url cannot be null

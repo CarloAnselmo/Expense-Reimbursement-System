@@ -1,6 +1,12 @@
+// $(document).ready(function () {
+//   $('#empTableFull').DataTable();
+//   $('.dataTables_length').addClass('bs-select');
+//   });
+
 function renderTable(reimbursements) {
     for (const reimbursement of reimbursements) {
       const tr = document.createElement("tr");
+      const buttonTd = document.createElement("td");
       const idTd = document.createElement("td");
       const amountTd = document.createElement("td");
       const submissionTd = document.createElement("td");
@@ -12,6 +18,15 @@ function renderTable(reimbursements) {
       const statusTd = document.createElement("td");
       const categoryTd = document.createElement("td");
 
+      const approveButton = document.createElement("button");
+      approveButton.innerHTML = "A";
+      approveButton.addEventListener('click', function(){approveReimbursement(reimbursement.id)});
+      approveButton.className = "btn btn-success btn-sm";
+      approveButton.id = reimbursement.id;
+      if(reimbursement.status!=="Pending") {
+        approveButton.setAttribute("hidden", "true");
+      }
+      buttonTd.append(approveButton);
       idTd.innerText = reimbursement.id;
       amountTd.innerText = "$"+reimbursement.amount;
       submissionTd.innerText = `${reimbursement.submitted.month} ${reimbursement.submitted.dayOfMonth}, ${reimbursement.submitted.year} ${reimbursement.submitted.hour}:${reimbursement.submitted.minute}:${reimbursement.submitted.second}`;
@@ -26,7 +41,7 @@ function renderTable(reimbursements) {
     resolverTd.innerText = reimbursement.resolver;
     statusTd.innerText = reimbursement.status;
     categoryTd.innerText = reimbursement.type;
-      tr.append(idTd, amountTd, submissionTd, resolutionTd, descriptionTd, receiptTd, authorTd, resolverTd, statusTd, categoryTd);
+      tr.append(buttonTd, idTd, amountTd, submissionTd, resolutionTd, descriptionTd, receiptTd, authorTd, resolverTd, statusTd, categoryTd);
       document.getElementById("reimbTableBody").append(tr);
     }
   };
@@ -66,10 +81,15 @@ async function registerUser() {
   document.getElementById('approveButton').addEventListener('click', approveReimbursement);
   document.getElementById('denyButton').addEventListener('click', denyReimbursement);
 
-async function approveReimbursement() {
-    const reimbId = document.getElementById('reimbIdApprove').value
-    const fetched = await fetch("http://localhost:8080/reimbursement/approved.json?approve="+reimbId, {
-      method:'post'
+// Approve
+async function approveReimbursement(approveB) {
+    const reimbursement = {
+      id:approveB,
+      resolver:localStorage.getItem("key")
+    }
+    const fetched = await fetch('http://localhost:8080/reimbursement/approved.json', {
+      method:'post',
+      body: JSON.stringify(reimbursement)
     });
     const json = await fetched.text();
     console.log(json);
@@ -77,10 +97,15 @@ async function approveReimbursement() {
     asyncFetch("http://localhost:8080/reimbursement/allR.json", renderTable);
 }
 
+// Deny
 async function denyReimbursement() {
-  const reimbId = document.getElementById('reimbIdDeny').value
-  const fetched = await fetch("http://localhost:8080/reimbursement/denied.json?deny="+reimbId, {
-    method:'post'
+  const reimbursement = {
+    id:document.getElementById('reimbIdDeny').value,
+    resolver:localStorage.getItem("key")
+  }
+  const fetched = await fetch('http://localhost:8080/reimbursement/denied.json', {
+    method:'post',
+    body: JSON.stringify(reimbursement)
   });
   const json = await fetched.text();
   console.log(json);

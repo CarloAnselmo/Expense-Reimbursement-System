@@ -46,16 +46,16 @@ public class UserController {
 			System.out.println(u);
 			try {
 				int userResult = us.registerEmployee(u);
-				res.getWriter().println("the user was created");
+				res.getWriter().println("The user was created.");
 			} catch (Exception e) {
 				e.printStackTrace();
 				logger.error(e);
-				res.getWriter().println("the user was not created");
+				res.getWriter().println("The user was not created.");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 			logger.error(e);
-			res.getWriter().println("something went wrong");
+			res.getWriter().println("Something went wrong.");
 		}
 	}
 

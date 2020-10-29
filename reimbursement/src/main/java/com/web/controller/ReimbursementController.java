@@ -105,16 +105,16 @@ public class ReimbursementController {
 //			System.out.println(r);
 			try {
 				int reimResult = rs.approveReimbursement(r.getId(),r.getResolver_id());
-				res.getWriter().println("the reimbursement was approved");
+				res.getWriter().println("Reimbursement was approved!");
 			} catch (Exception e) {
 				e.printStackTrace();
 				logger.error(e);
-				res.getWriter().println("something went wrong");
+				res.getWriter().println("Something went wrong.");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 			logger.error(e);
-			res.getWriter().println("something went wrong");
+			res.getWriter().println("Something went wrong.");
 		}
 	}
 	
@@ -128,16 +128,16 @@ public class ReimbursementController {
 //			System.out.println(r);
 			try {
 				int reimResult = rs.denyReimbursement(r.getId(),r.getResolver_id());
-				res.getWriter().println("the reimbursement was denied");
+				res.getWriter().println("The reimbursement was denied.");
 			} catch (Exception e) {
 				e.printStackTrace();
 				logger.error(e);
-				res.getWriter().println("something went wrong");
+				res.getWriter().println("Something went wrong.");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 			logger.error(e);
-			res.getWriter().println("something went wrong");
+			res.getWriter().println("Something went wrong.");
 		}
 	}
 
@@ -151,16 +151,16 @@ public class ReimbursementController {
 //			System.out.println(r);
 			try {
 				int reimResult = rs.submitReimbursement(r);
-				res.getWriter().println("the reimbursement was added");
+				res.getWriter().println("The reimbursement was added.");
 			} catch (Exception e) {
 				e.printStackTrace();
 				logger.error(e);
-				res.getWriter().println("something went wrong");
+				res.getWriter().println("Something went wrong.");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 			logger.error(e);
-			res.getWriter().println("something went wrong");
+			res.getWriter().println("Something went wrong.");
 		}
 	}
 }

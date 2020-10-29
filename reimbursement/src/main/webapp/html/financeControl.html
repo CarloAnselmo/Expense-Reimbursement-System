@@ -11,12 +11,52 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link href="css/extra.css" rel="stylesheet" />
     </head>
-    <body>
+    <body style="background: url('assets/img/tableBackground.jpg') no-repeat #412700; background-size: 100% 1800px;">
 
-        <h1>All Reimbursements</h1>
-        <h3 id="empName">Greetings, </h3>
-        <br />
-        <br />
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-5">
+          <div style="background: linear-gradient(143deg, rgba(255,64,0,.75) 0%, rgba(255,145,0,.75) 100%); padding: 10px; border-radius: 10px; border: solid black;">
+          <p style="color: white; font: Georgia; font-size: larger;">Register a new employee:</p>
+          <input type="text" id="usernameNU" placeholder="Username" />
+          <br />
+          <input type="password" id="passwordNU" placeholder="Temporary Password" />
+          <br />
+          <input type="text" id="firstnameNU" placeholder="First Name" />
+          <br />
+          <input type="text" id="lastnameNU" placeholder="Last Name" />
+          <br />
+          <input type="text" id="emailNU" placeholder="Email" />
+          <br />
+          <button class="btn btn-primary" id="registerU">Create New Employee</button><span id="submission"></span>
+        </div>
+        </div>
+        <!-- <div class="col-2"></div> -->
+        <div class="col-5">
+          <div style="background: linear-gradient(143deg, rgba(255,64,0,.75) 0%, rgba(255,145,0,.75) 100%); padding: 10px; border-radius: 10px; border: solid black;">
+          <h1 style="color: white; font: Georgia;">All Reimbursements</h1>
+          <h3 id="empName" style="color: white; font: Georgia;">Greetings, </h3>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+        </div>
+        </div>
+        </div>
+        <div class="col-1"></div>
+      </div>
+    </div>
+
+        
+        
         <br />
         <!-- <div class="container-fluid text-center">
             <div class="row">
@@ -38,11 +78,22 @@
                 <button class="btn btn-success btn-sm longee" id="sortAll">Show All</button>
                 <button class="btn btn-warning btn-sm longee" id="sortPending">Show Pending</button>
                 <button class="btn btn-danger btn-sm longee" id="sortCompleted">Show Completed</button>
-                <table class="table table-striped table-hover table-sm table-bordered" data-sortable="true" id="empTableFull">
-                    <thead
-                    style="background: rgb(255,0,0);
-                    background: linear-gradient(122deg, rgba(255,0,0,1) 0%, rgba(255,145,0,1) 100%);"
-                    >
+                <table
+                class="table table-striped table-hover table-sm"
+                data-filter-control="true"
+                data-show-search-clear-button="true"
+                style="background: #ffe1b4CC; border: black; border-radius: 20px;"
+              >
+                <thead
+                  style="
+                    background: rgb(255, 0, 0);
+                    background: linear-gradient(
+                      122deg,
+                      rgba(255, 0, 0, 1) 0%,
+                      rgba(255, 145, 0, 1) 100%
+                    );
+                  "
+                >
                         <tr>
                             <th scope="col">App/Deny</th>
                             <th scope="col">ID</th>
@@ -64,53 +115,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="container-fluid">
-            <div class="row">
-              <div class="col-1"></div>
-              <div class="col-3">
-                <!-- <br />
-                <div id="approveDiv" 
-                style="background-color: white; padding: 10px; border-radius: 10px;">
-                <p>
-                  <u>Pick a number to approve a reimbursement. You cannot approve a
-                    reimbursement that has already been denied:</u>
-                </p>
-                <input type="number" placeholder="number" id="reimbIdApprove" />
-                <input type="submit" value="Submit" id="approveButton" />
-            </div>
-                <br><br>
-                <p>
-                    <u>Pick a number to deny a reimbursement. You cannot deny a
-                      reimbursement that has already been denied:</u>
-                  </p>
-                  <input type="number" placeholder="number" id="reimbIdDeny" />
-                  <input type="submit" value="Submit" id="denyButton" />
-                  <br />
-                  <br /> -->
-                  <div style="background-color: #FF9900; padding: 10px; border-radius: 10px;">
-                  <p style="color: white; font: Georgia">Register a new user:</p>
-                  <input type="text" id="usernameNU" placeholder="Username" />
-                  <br />
-                  <input type="password" id="passwordNU" placeholder="Temporary Password" />
-                  <br />
-                  <input type="text" id="firstnameNU" placeholder="First Name" />
-                  <br />
-                  <input type="text" id="lastnameNU" placeholder="Last Name" />
-                  <br />
-                  <input type="text" id="emailNU" placeholder="Email" />
-                  <br />
-                  <button class="btn btn-primary" id="registerU">Create New Employee</button>
-                  <br />
-                  </div>
-              </div>
-              <div class="col-8"></div>
-            </div>
-          </div>
-
-
-
-
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>

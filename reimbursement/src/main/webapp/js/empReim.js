@@ -1,6 +1,7 @@
 function renderTable(reimbursements) {
     for (const reimbursement of reimbursements) {
       const tr = document.createElement("tr");
+      const buttonTd = document.createElement("td");
       const idTd = document.createElement("td");
       const amountTd = document.createElement("td");
       const submissionTd = document.createElement("td");
@@ -10,6 +11,17 @@ function renderTable(reimbursements) {
       const resolverTd = document.createElement("td");
       const statusTd = document.createElement("td");
       const categoryTd = document.createElement("td");
+
+      // Delete button
+      const deleteButton = document.createElement("button");
+      deleteButton.innerHTML = "X";
+      deleteButton.addEventListener('click', function(){deleteReimbursement(reimbursement.id)});
+      deleteButton.className = "btn btn-danger btn-sm";
+      deleteButton.id = reimbursement.id;
+      if(reimbursement.status!=="Pending") {
+        deleteButton.setAttribute("hidden", "true");
+      }
+      buttonTd.append(deleteButton);
 
       idTd.innerText = reimbursement.id;
       amountTd.innerText = "$"+reimbursement.amount;
@@ -23,8 +35,17 @@ function renderTable(reimbursements) {
     receiptTd.innerText = reimbursement.receipt;
     resolverTd.innerText = reimbursement.resolver;
     statusTd.innerText = reimbursement.status;
+    if(reimbursement.status==="Pending") {
+      statusTd.style.color = "#888800";
+    }
+    if(reimbursement.status==="Approved") {
+      statusTd.style.color = "#009900";
+    }
+    if(reimbursement.status==="Denied") {
+      statusTd.style.color = "#BB0000";
+    }
     categoryTd.innerText = reimbursement.type;
-      tr.append(idTd, amountTd, submissionTd, resolutionTd, descriptionTd, receiptTd, resolverTd, statusTd, categoryTd);
+      tr.append(buttonTd, idTd, amountTd, submissionTd, resolutionTd, descriptionTd, receiptTd, resolverTd, statusTd, categoryTd);
       document.getElementById("reimbTableBody").append(tr);
     }
   };
@@ -61,15 +82,20 @@ async function addReimbursement() {
       body: JSON.stringify(reimbursement)
     });
     const json = await fetched.text();
-    console.log(json);
+    // document.getElementById('submission').innerHTML(json);
+    document.getElementById('submission').innerHTML='  ';
+    document.getElementById('submission').append(json);
+    document.getElementById('submission').style.color = "#FFFF00";
+    document.getElementById('submission').style.fontSize = "larger";
+    // console.log(json);
     populateTable();
   }
   
-  document.getElementById('deleteButton').addEventListener('click', deleteReimbursement);
+  // document.getElementById('deleteButton').addEventListener('click', deleteReimbursement);
 
-async function deleteReimbursement() {
-    const reimbId = document.getElementById('reimbId').value
-    const fetched = await fetch("http://localhost:8080/reimbursement/removed.json?id="+reimbId, {
+async function deleteReimbursement(deleteB) {
+    const gone = deleteB;
+    const fetched = await fetch("http://localhost:8080/reimbursement/removed.json?id="+gone, {
       method:'post'
     });
     const json = await fetched.text();
@@ -79,7 +105,7 @@ async function deleteReimbursement() {
 
 // Generating text above employee table
 const tableTop = document.getElementById("empName");
-const text = document.createTextNode(`${localStorage.getItem("key3")} ${localStorage.getItem("key4")}!`);
+const text = document.createTextNode(`${localStorage.getItem("key3")} ${localStorage.getItem("key4")}`);
 tableTop.appendChild(text);
 
 console.log("howdy");

@@ -73,7 +73,17 @@ function renderTable(reimbursements) {
     receiptTd.innerText = reimbursement.receipt;
     authorTd.innerText = reimbursement.author;
     resolverTd.innerText = reimbursement.resolver;
+    const stringThing = reimbursement.status;
     statusTd.innerText = reimbursement.status;
+    if(reimbursement.status==="Pending") {
+      statusTd.style.color = "#888800";
+    }
+    if(reimbursement.status==="Approved") {
+      statusTd.style.color = "#009900";
+    }
+    if(reimbursement.status==="Denied") {
+      statusTd.style.color = "#BB0000";
+    }
     categoryTd.innerText = reimbursement.type;
       tr.append(buttonTd, idTd, amountTd, submissionTd, resolutionTd, descriptionTd, receiptTd, authorTd, resolverTd, statusTd, categoryTd);
       document.getElementById("reimbTableBody").append(tr);
@@ -128,9 +138,10 @@ async function registerUser() {
       body: JSON.stringify(user)
     });
     const json = await fetched.text();
-    console.log(json);
-    const rows = document.getElementById('reimbTableBody').innerHTML='';
-    asyncFetch("http://localhost:8080/reimbursement/allR.json", renderTable);
+    document.getElementById('submission').innerHTML='  ';
+    document.getElementById('submission').append(json);
+    document.getElementById('submission').style.color = "#FFFF00";
+    document.getElementById('submission').style.fontSize = "larger";
   }
   
   // ----------------------------------------- Approve/Deny Reimbursements -----------------------------------------

@@ -5,25 +5,35 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.web.controller.ReimbursementController;
 import com.web.controller.UserController;
 
 public class RequestForwarder {
 
+	final static Logger logger = Logger.getLogger(RequestForwarder.class);
+	
 	public String routes(HttpServletRequest req) {
+		logger.info(req.getRequestURI());
 		switch (req.getRequestURI()){
 		case "/reimbursement/employee.page":
+			logger.info("Navigating to single employee page");
 			return "html/employeeReimbursements.html";
-		case "/reimbursement-0.0.1-SNAPSHOT/finance.page":
+		case "/reimbursement/finance.page":
+			logger.info("Navigating to all finance page");
 			return "html/financeControl.html";
 		default: 
+			logger.info("Warning: User fell through in page navigation");
 			return "html/main.html";
 		}
 	}
 	
 	public void data(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		logger.info(req.getRequestURI());
 		switch(req.getRequestURI()) {
 		case "/reimbursement/verify.json":
+			logger.info("User logging in");
 			new UserController().login(req, res);
 			break;
 		case "/reimbursement/register.json":

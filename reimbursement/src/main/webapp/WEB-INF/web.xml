@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-  <display-name>reimbursement</display-name>
-  <welcome-file-list>
-  <welcome-file>html/main.html</welcome-file>
-  </welcome-file-list>	
-  	<servlet>
-		<servlet-name>indirect</servlet-name>
-		<servlet-class>com.web.servlet.DataServlet</servlet-class>
-		<init-param>
-			<param-name>servlet</param-name>
-			<param-value>indirect servlet parameter</param-value>
-		</init-param>
-	</servlet>
-  	<servlet-mapping>
-		<servlet-name>indirect</servlet-name>
-		<url-pattern>/login</url-pattern>
-	</servlet-mapping>
-		<error-page>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<display-name>reimbursement</display-name>
+	<welcome-file-list>
+		<welcome-file>html/main.html</welcome-file>
+	</welcome-file-list>
+
+	<!-- <servlet> <servlet-name>indirect</servlet-name> <servlet-class>com.web.servlet.DataServlet</servlet-class> 
+		<init-param> <param-name>servlet</param-name> <param-value>indirect servlet 
+		parameter</param-value> </init-param> </servlet> <servlet-mapping> <servlet-name>indirect</servlet-name> 
+		<url-pattern>/login</url-pattern> </servlet-mapping> -->
+	<error-page>
 		<error-code>404</error-code>
 		<location>/html/newError.html</location>
 	</error-page>
@@ -24,10 +20,6 @@
 		<exception-type>java.sql.SQLException</exception-type>
 		<location>/html/error.html</location>
 	</error-page>
-	<!--  
-	<servlet-mapping>
-		<servlet-name>indirect</servlet-name>
-		<url-pattern>"*.page"</url-pattern>
-	</servlet-mapping>
-	-->
+	<!-- <servlet-mapping> <servlet-name>indirect</servlet-name> <url-pattern>"*.page"</url-pattern> 
+		</servlet-mapping> -->
 </web-app>

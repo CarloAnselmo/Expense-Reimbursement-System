@@ -60,7 +60,7 @@ function renderTable(reimbursements) {
 
   async function populateTable() {
     const currentUserName = localStorage.getItem("key");
-    const fetched = await fetch("http://localhost:8081/reimbursement/specR.json?name="+currentUserName, {
+    const fetched = await fetch("http://localhost:8080/reimbursement/specR.json?name="+currentUserName, {
       method:'post'
     });
     const json = await fetched.json();
@@ -77,7 +77,7 @@ async function addReimbursement() {
       type_id:document.getElementById('categoriesF').value,
       author:localStorage.getItem("key")
     }
-    const fetched = await fetch('http://localhost:8081/reimbursement/empReim.json', {
+    const fetched = await fetch('http://localhost:8080/reimbursement/empReim.json', {
       method:'post',
       body: JSON.stringify(reimbursement)
     });
@@ -95,7 +95,7 @@ async function addReimbursement() {
 
 async function deleteReimbursement(deleteB) {
     const gone = deleteB;
-    const fetched = await fetch("http://localhost:8081/reimbursement/removed.json?id="+gone, {
+    const fetched = await fetch("http://localhost:8080/reimbursement/removed.json?id="+gone, {
       method:'post'
     });
     const json = await fetched.text();

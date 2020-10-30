@@ -97,7 +97,7 @@ function renderTable(reimbursements) {
   };
   
   asyncFetch(
-  "http://localhost:8081/reimbursement/allR.json",
+  "http://localhost:8080/reimbursement/allR.json",
   renderTable
   );
 
@@ -109,21 +109,21 @@ function renderTable(reimbursements) {
   async function sortTableAll() {
     document.getElementById('notification').innerHTML='  ';
     const rows = document.getElementById('reimbTableBody').innerHTML='';
-    asyncFetch("http://localhost:8081/reimbursement/allR.json", renderTable);
+    asyncFetch("http://localhost:8080/reimbursement/allR.json", renderTable);
     whichTab = 0;
   }
 
   async function sortTablePending() {
     document.getElementById('notification').innerHTML='  ';
     const rows = document.getElementById('reimbTableBody').innerHTML='';
-    asyncFetch("http://localhost:8081/reimbursement/showPending.json", renderTable);
+    asyncFetch("http://localhost:8080/reimbursement/showPending.json", renderTable);
     whichTab = 1;
   }
 
   async function sortTableCompleted() {
     document.getElementById('notification').innerHTML='  ';
     const rows = document.getElementById('reimbTableBody').innerHTML='';
-    asyncFetch("http://localhost:8081/reimbursement/showCompleted.json", renderTable);
+    asyncFetch("http://localhost:8080/reimbursement/showCompleted.json", renderTable);
   }
 
   // ----------------------------------------- Employee registration -----------------------------------------
@@ -137,7 +137,7 @@ async function registerUser() {
       lastname:document.getElementById('lastnameNU').value,
       email:document.getElementById('emailNU').value
     }
-    const fetched = await fetch('http://localhost:8081/reimbursement/register.json', {
+    const fetched = await fetch('http://localhost:8080/reimbursement/register.json', {
       method:'post',
       body: JSON.stringify(user)
     });
@@ -158,7 +158,7 @@ async function approveReimbursement(approveB) {
       id:approveB,
       resolver:localStorage.getItem("key")
     }
-    const fetched = await fetch('http://localhost:8081/reimbursement/approved.json', {
+    const fetched = await fetch('http://localhost:8080/reimbursement/approved.json', {
       method:'post',
       body: JSON.stringify(reimbursement)
     });
@@ -169,9 +169,9 @@ async function approveReimbursement(approveB) {
     document.getElementById('notification').style.fontSize = "larger";
     const rows = document.getElementById('reimbTableBody').innerHTML='';
     if(whichTab === 1) {
-      asyncFetch("http://localhost:8081/reimbursement/showPending.json", renderTable);
+      asyncFetch("http://localhost:8080/reimbursement/showPending.json", renderTable);
     } else {
-      asyncFetch("http://localhost:8081/reimbursement/allR.json", renderTable);
+      asyncFetch("http://localhost:8080/reimbursement/allR.json", renderTable);
     }
 }
 
@@ -181,7 +181,7 @@ async function denyReimbursement(denyB) {
     id:denyB,
     resolver:localStorage.getItem("key")
   }
-  const fetched = await fetch('http://localhost:8081/reimbursement/denied.json', {
+  const fetched = await fetch('http://localhost:8080/reimbursement/denied.json', {
     method:'post',
     body: JSON.stringify(reimbursement)
   });
@@ -192,9 +192,9 @@ async function denyReimbursement(denyB) {
   document.getElementById('notification').style.fontSize = "larger";
   const rows = document.getElementById('reimbTableBody').innerHTML='';
   if(whichTab === 1) {
-    asyncFetch("http://localhost:8081/reimbursement/showPending.json", renderTable);
+    asyncFetch("http://localhost:8080/reimbursement/showPending.json", renderTable);
   } else {
-    asyncFetch("http://localhost:8081/reimbursement/allR.json", renderTable);
+    asyncFetch("http://localhost:8080/reimbursement/allR.json", renderTable);
   }
 }
 

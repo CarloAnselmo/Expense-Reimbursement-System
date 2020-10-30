@@ -10,9 +10,9 @@ public class ReimbursementService {
 	private ReimbursementDao rdao;
 
 	public ReimbursementService(ReimbursementDao rdao) {
-<span class="nc" id="L13">		super();</span>
-<span class="nc" id="L14">		this.rdao = rdao;</span>
-<span class="nc" id="L15">	}</span>
+<span class="fc" id="L13">		super();</span>
+<span class="fc" id="L14">		this.rdao = rdao;</span>
+<span class="fc" id="L15">	}</span>
 	
 //	private ReimbursementDao rdao;
 //	
@@ -22,45 +22,53 @@ public class ReimbursementService {
 //	}
 
 	public ReimbursementService() {
-<span class="nc" id="L25">		this(new ReimbursementDao());</span>
-<span class="nc" id="L26">	}</span>
+<span class="fc" id="L25">		this(new ReimbursementDao());</span>
+<span class="fc" id="L26">	}</span>
+	
+	public double sumUserOffers(String s) {
+<span class="nc" id="L29">		return rdao.callSum(s);</span>
+	}
 	
 	public List&lt;ReimbursementDTO&gt; ViewAllReimbursements() {
-<span class="nc" id="L29">		return rdao.findAll();</span>
+<span class="nc" id="L33">		return rdao.findAll();</span>
 	}
 	
 	public List&lt;ReimbursementDTO&gt; viewUserReimbursements(String s) {
-<span class="nc" id="L33">		return rdao.findByName(s);</span>
+<span class="nc" id="L37">		return rdao.findByName(s);</span>
+	}
+	
+	public ReimbursementDTO viewByID(Integer i) {
+<span class="nc" id="L41">		return rdao.findById(i);</span>
 	}
 	
 	public List&lt;ReimbursementDTO&gt; viewPendingReimbursements() {
-<span class="nc" id="L37">		return rdao.findByStatus(&quot;Pending&quot;);</span>
+<span class="nc" id="L45">		return rdao.findByStatus(&quot;Pending&quot;);</span>
 	}
 	
 	public List&lt;ReimbursementDTO&gt; viewCompletedReimbursements() {
-<span class="nc" id="L41">		List&lt;ReimbursementDTO&gt; newList = rdao.findByStatus(&quot;Denied&quot;);</span>
-<span class="nc" id="L42">		newList.addAll(rdao.findByStatus(&quot;Approved&quot;));</span>
-<span class="nc" id="L43">		return newList;</span>
+<span class="nc" id="L49">		List&lt;ReimbursementDTO&gt; newList = rdao.findByStatus(&quot;Denied&quot;);</span>
+<span class="nc" id="L50">		newList.addAll(rdao.findByStatus(&quot;Approved&quot;));</span>
+<span class="nc" id="L51">		return newList;</span>
 	}
 	
 	public int submitReimbursement(ReimbursementDTO t) throws Exception {
-<span class="nc" id="L47">		int result = rdao.create(t);</span>
-<span class="nc bnc" id="L48" title="All 2 branches missed.">		if(result==0) {</span>
-<span class="nc" id="L49">			throw new Exception(&quot;The request was not submitted.&quot;);</span>
+<span class="nc" id="L55">		int result = rdao.create(t);</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">		if(result==0) {</span>
+<span class="nc" id="L57">			throw new Exception(&quot;The request was not submitted.&quot;);</span>
 		}
-<span class="nc" id="L51">		return result;</span>
+<span class="nc" id="L59">		return result;</span>
 	}
 	
 	public int approveReimbursement(Integer i, Integer i2) {
-<span class="nc" id="L55">		return rdao.approveRequest(i, i2);</span>
+<span class="nc" id="L63">		return rdao.approveRequest(i, i2);</span>
 	}
 	
 	public int denyReimbursement(Integer i, Integer i2) {
-<span class="nc" id="L59">		return rdao.denyRequest(i, i2);</span>
+<span class="nc" id="L67">		return rdao.denyRequest(i, i2);</span>
 	}
 	
 	public int deleteReimbursement(Integer i) {
-<span class="nc" id="L63">		return rdao.delete(i);</span>
+<span class="nc" id="L71">		return rdao.delete(i);</span>
 	}
 	
 }

@@ -194,3 +194,33 @@
   Detail: Key (ers_username)=(Testman2) already exists.
 2020-10-28 15:08:42 ERROR UserDao:102 - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "ers_users_ers_username_key"
   Detail: Key (ers_username)=(Testman2) already exists.
+2020-10-29 10:35:01 ERROR UserDao:124 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_users" violates foreign key constraint "ers_users_user_role_id_fkey"
+  Detail: Key (user_role_id)=(6) is not present in table "ers_user_roles".
+2020-10-29 10:36:14 ERROR UserDao:102 - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "ers_users_ers_username_key"
+  Detail: Key (ers_username)=(Testman2) already exists.
+2020-10-29 10:38:05 ERROR UserDao:124 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_users" violates foreign key constraint "ers_users_user_role_id_fkey"
+  Detail: Key (user_role_id)=(0) is not present in table "ers_user_roles".
+2020-10-29 10:39:58 ERROR UserDao:102 - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "ers_users_ers_username_key"
+  Detail: Key (ers_username)=(Testman2) already exists.
+2020-10-29 10:40:36 ERROR UserDao:124 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_users" violates foreign key constraint "ers_users_user_role_id_fkey"
+  Detail: Key (user_role_id)=(0) is not present in table "ers_user_roles".
+2020-10-29 10:41:36 ERROR UserDao:124 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_users" violates foreign key constraint "ers_users_user_role_id_fkey"
+  Detail: Key (user_role_id)=(0) is not present in table "ers_user_roles".
+2020-10-29 18:24:40 ERROR ReimbursementDao:214 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_reimbursement" violates foreign key constraint "ers_reimbursement_reimb_type_id_fkey"
+  Detail: Key (reimb_type_id)=(7) is not present in table "ers_reimbursement_type".
+2020-10-29 18:24:44 ERROR ReimbursementDao:214 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_reimbursement" violates foreign key constraint "ers_reimbursement_reimb_type_id_fkey"
+  Detail: Key (reimb_type_id)=(7) is not present in table "ers_reimbursement_type".
+2020-10-29 18:26:10 ERROR ReimbursementDao:214 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_reimbursement" violates foreign key constraint "ers_reimbursement_reimb_type_id_fkey"
+  Detail: Key (reimb_type_id)=(7) is not present in table "ers_reimbursement_type".
+2020-10-29 18:33:29 ERROR ReimbursementDao:214 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_reimbursement" violates foreign key constraint "ers_reimbursement_reimb_type_id_fkey"
+  Detail: Key (reimb_type_id)=(7) is not present in table "ers_reimbursement_type".
+2020-10-29 18:34:02 ERROR ReimbursementDao:214 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_reimbursement" violates foreign key constraint "ers_reimbursement_reimb_type_id_fkey"
+  Detail: Key (reimb_type_id)=(7) is not present in table "ers_reimbursement_type".
+2020-10-29 18:50:30 ERROR ReimbursementDao:231 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_reimbursement" violates foreign key constraint "ers_reimbursement_reimb_type_id_fkey"
+  Detail: Key (reimb_type_id)=(7) is not present in table "ers_reimbursement_type".
+2020-10-29 19:51:38 ERROR ReimbursementDao:233 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_reimbursement" violates foreign key constraint "ers_reimbursement_reimb_type_id_fkey"
+  Detail: Key (reimb_type_id)=(7) is not present in table "ers_reimbursement_type".
+2020-10-29 20:06:49 ERROR ReimbursementDao:175 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_reimbursement" violates foreign key constraint "ers_reimbursement_reimb_type_id_fkey"
+  Detail: Key (reimb_type_id)=(0) is not present in table "ers_reimbursement_type".
+2020-10-29 20:10:19 ERROR ReimbursementDao:233 - org.postgresql.util.PSQLException: ERROR: insert or update on table "ers_reimbursement" violates foreign key constraint "ers_reimbursement_reimb_type_id_fkey"
+  Detail: Key (reimb_type_id)=(7) is not present in table "ers_reimbursement_type".

@@ -5,34 +5,37 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionUtil {
-	
+
 	{
 		try {
 <span class="fc" id="L11">			Class.forName(&quot;org.postgresql.Driver&quot;);</span>
-<span class="pc" id="L12">		} catch (ClassNotFoundException e) {</span>
+<span class="nc" id="L12">		} catch (ClassNotFoundException e) {</span>
 <span class="nc" id="L13">			e.printStackTrace();</span>
-		}
+<span class="fc" id="L14">		}</span>
 	}
-	
+
 	// jdbc:postgresql://carlo-db-instance.cfrkice9i0us.us-east-1.rds.amazonaws.com:5432/myDatabase?currentSchema=reimbursement
-	
-<span class="fc" id="L19">	private String url = System.getenv(&quot;url&quot;);</span>
-<span class="fc" id="L20">	private String username = System.getenv(&quot;username&quot;);</span>
-<span class="fc" id="L21">	private String password = System.getenv(&quot;password&quot;);</span>
+
+//	private String url = System.getenv(&quot;url&quot;);
+//	private String username = System.getenv(&quot;username&quot;);
+//	private String password = System.getenv(&quot;password&quot;);
+<span class="fc" id="L22">	private String url = &quot;jdbc:postgresql://carlo-db-instance.cfrkice9i0us.us-east-1.rds.amazonaws.com:5432/myDatabase?currentSchema=reimbursement&quot;;</span>
+<span class="fc" id="L23">	private String username = &quot;burm_man&quot;;</span>
+<span class="fc" id="L24">	private String password = &quot;banana&quot;;</span>
 	private static ConnectionUtil instance;
-	
-<span class="fc" id="L24">	public ConnectionUtil() {</span>
-<span class="fc" id="L25">	}</span>
-	
+
+<span class="fc" id="L27">	public ConnectionUtil() {</span>
+<span class="fc" id="L28">	}</span>
+
 	public static ConnectionUtil getInstance() {
-<span class="fc bfc" id="L28" title="All 2 branches covered.">		if(instance == null) {</span>
-<span class="fc" id="L29">			instance = new ConnectionUtil();</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">		if (instance == null) {</span>
+<span class="fc" id="L32">			instance = new ConnectionUtil();</span>
 		}
-<span class="fc" id="L31">		return instance;</span>
+<span class="fc" id="L34">		return instance;</span>
 	}
-	
+
 	public Connection getConnection() throws SQLException {
-<span class="nc" id="L35">		return DriverManager.getConnection(url, username, password);</span>
+<span class="fc" id="L38">		return DriverManager.getConnection(url, username, password);</span>
 	}
 
 }

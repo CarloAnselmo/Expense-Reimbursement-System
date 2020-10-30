@@ -25,12 +25,20 @@ public class ReimbursementService {
 		this(new ReimbursementDao());
 	}
 	
+	public double sumUserOffers(String s) {
+		return rdao.callSum(s);
+	}
+	
 	public List<ReimbursementDTO> ViewAllReimbursements() {
 		return rdao.findAll();
 	}
 	
 	public List<ReimbursementDTO> viewUserReimbursements(String s) {
 		return rdao.findByName(s);
+	}
+	
+	public ReimbursementDTO viewByID(Integer i) {
+		return rdao.findById(i);
 	}
 	
 	public List<ReimbursementDTO> viewPendingReimbursements() {

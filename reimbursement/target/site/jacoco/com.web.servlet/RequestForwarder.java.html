@@ -5,55 +5,65 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.web.controller.ReimbursementController;
 import com.web.controller.UserController;
 
-<span class="nc" id="L11">public class RequestForwarder {</span>
+<span class="nc" id="L13">public class RequestForwarder {</span>
 
+<span class="nc" id="L15">	final static Logger logger = Logger.getLogger(RequestForwarder.class);</span>
+	
 	public String routes(HttpServletRequest req) {
-<span class="nc bnc" id="L14" title="All 7 branches missed.">		switch (req.getRequestURI()){</span>
+<span class="nc" id="L18">		logger.info(req.getRequestURI());</span>
+<span class="nc bnc" id="L19" title="All 10 branches missed.">		switch (req.getRequestURI()){</span>
 		case &quot;/reimbursement/employee.page&quot;:
-<span class="nc" id="L16">			return &quot;html/employeeReimbursements.html&quot;;</span>
+<span class="nc" id="L21">			logger.info(&quot;Navigating to single employee page&quot;);</span>
+<span class="nc" id="L22">			return &quot;html/employeeReimbursements.html&quot;;</span>
 		case &quot;/reimbursement/finance.page&quot;:
-<span class="nc" id="L18">			return &quot;html/financeControl.html&quot;;</span>
+<span class="nc" id="L24">			logger.info(&quot;Navigating to all finance page&quot;);</span>
+<span class="nc" id="L25">			return &quot;html/financeControl.html&quot;;</span>
 		default: 
-<span class="nc" id="L20">			return &quot;html/main.html&quot;;</span>
+<span class="nc" id="L27">			logger.info(&quot;Warning: User fell through in page navigation&quot;);</span>
+<span class="nc" id="L28">			return &quot;html/main.html&quot;;</span>
 		}
 	}
 	
 	public void data(HttpServletRequest req, HttpServletResponse res) throws IOException {
-<span class="nc bnc" id="L25" title="All 31 branches missed.">		switch(req.getRequestURI()) {</span>
+<span class="nc" id="L33">		logger.info(req.getRequestURI());</span>
+<span class="nc bnc" id="L34" title="All 42 branches missed.">		switch(req.getRequestURI()) {</span>
 		case &quot;/reimbursement/verify.json&quot;:
-<span class="nc" id="L27">			new UserController().login(req, res);</span>
-<span class="nc" id="L28">			break;</span>
+<span class="nc" id="L36">			logger.info(&quot;User logging in&quot;);</span>
+<span class="nc" id="L37">			new UserController().login(req, res);</span>
+<span class="nc" id="L38">			break;</span>
 		case &quot;/reimbursement/register.json&quot;:
-<span class="nc" id="L30">			new UserController().register(req, res);</span>
-<span class="nc" id="L31">			break;</span>
+<span class="nc" id="L40">			new UserController().register(req, res);</span>
+<span class="nc" id="L41">			break;</span>
 		case &quot;/reimbursement/empReim.json&quot;:
-<span class="nc" id="L33">			new ReimbursementController().save(req, res);</span>
-<span class="nc" id="L34">			break;</span>
+<span class="nc" id="L43">			new ReimbursementController().save(req, res);</span>
+<span class="nc" id="L44">			break;</span>
 		case &quot;/reimbursement/allR.json&quot;:
-<span class="nc" id="L36">			new ReimbursementController().sendAllData(res);</span>
-<span class="nc" id="L37">			break;</span>
+<span class="nc" id="L46">			new ReimbursementController().sendAllData(res);</span>
+<span class="nc" id="L47">			break;</span>
 		case &quot;/reimbursement/specR.json&quot;:
-<span class="nc" id="L39">			new ReimbursementController().sendSpecificData(req, res);</span>
-<span class="nc" id="L40">			break;</span>
+<span class="nc" id="L49">			new ReimbursementController().sendSpecificData(req, res);</span>
+<span class="nc" id="L50">			break;</span>
 		case &quot;/reimbursement/showPending.json&quot;:
-<span class="nc" id="L42">			new ReimbursementController().sendPending(res);</span>
-<span class="nc" id="L43">			break;</span>
+<span class="nc" id="L52">			new ReimbursementController().sendPending(res);</span>
+<span class="nc" id="L53">			break;</span>
 		case &quot;/reimbursement/showCompleted.json&quot;:
-<span class="nc" id="L45">			new ReimbursementController().sendComplete(res);</span>
-<span class="nc" id="L46">			break;</span>
+<span class="nc" id="L55">			new ReimbursementController().sendComplete(res);</span>
+<span class="nc" id="L56">			break;</span>
 		case &quot;/reimbursement/removed.json&quot;:
-<span class="nc" id="L48">			new ReimbursementController().removeReimbursement(req, res);</span>
-<span class="nc" id="L49">			break;</span>
+<span class="nc" id="L58">			new ReimbursementController().removeReimbursement(req, res);</span>
+<span class="nc" id="L59">			break;</span>
 		case &quot;/reimbursement/approved.json&quot;:
-<span class="nc" id="L51">			new ReimbursementController().approveReimbursement(req, res);</span>
-<span class="nc" id="L52">			break;</span>
+<span class="nc" id="L61">			new ReimbursementController().approveReimbursement(req, res);</span>
+<span class="nc" id="L62">			break;</span>
 		case &quot;/reimbursement/denied.json&quot;:
-<span class="nc" id="L54">			new ReimbursementController().denyReimbursement(req, res);</span>
+<span class="nc" id="L64">			new ReimbursementController().denyReimbursement(req, res);</span>
 			break;
 		}
-<span class="nc" id="L57">	}</span>
+<span class="nc" id="L67">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

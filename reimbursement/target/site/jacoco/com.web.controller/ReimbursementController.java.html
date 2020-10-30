@@ -16,20 +16,20 @@ import com.web.service.UserService;
 
 public class ReimbursementController {
 
-<span class="nc" id="L19">	final static Logger logger = Logger.getLogger(ReimbursementController.class);</span>
+<span class="fc" id="L19">	final static Logger logger = Logger.getLogger(ReimbursementController.class);</span>
 
 	private ReimbursementService rs;
 	private UserService us;
 
 	public ReimbursementController(ReimbursementService rs, UserService us) {
-<span class="nc" id="L25">		super();</span>
-<span class="nc" id="L26">		this.rs = rs;</span>
-<span class="nc" id="L27">		this.us = us;</span>
-<span class="nc" id="L28">	}</span>
+<span class="fc" id="L25">		super();</span>
+<span class="fc" id="L26">		this.rs = rs;</span>
+<span class="fc" id="L27">		this.us = us;</span>
+<span class="fc" id="L28">	}</span>
 
 	public ReimbursementController() {
-<span class="nc" id="L31">		this(new ReimbursementService(), new UserService());</span>
-<span class="nc" id="L32">	}</span>
+<span class="fc" id="L31">		this(new ReimbursementService(), new UserService());</span>
+<span class="fc" id="L32">	}</span>
 
 	public void sendAllData(HttpServletResponse res) {
 <span class="nc" id="L35">		res.setContentType(&quot;text/json&quot;);</span>
@@ -38,7 +38,7 @@ public class ReimbursementController {
 <span class="nc" id="L38">			res.getWriter().println(new ObjectMapper().writeValueAsString(reimbursements));</span>
 <span class="nc" id="L39">		} catch (IOException e) {</span>
 <span class="nc" id="L40">			logger.error(e);</span>
-		}
+<span class="nc" id="L41">		}</span>
 <span class="nc" id="L42">	}</span>
 	
 	public void sendPending(HttpServletResponse res) {
@@ -48,7 +48,7 @@ public class ReimbursementController {
 <span class="nc" id="L48">			res.getWriter().println(new ObjectMapper().writeValueAsString(reimbursements));</span>
 <span class="nc" id="L49">		} catch (IOException e) {</span>
 <span class="nc" id="L50">			logger.error(e);</span>
-		}
+<span class="nc" id="L51">		}</span>
 <span class="nc" id="L52">	}</span>
 	
 	public void sendComplete(HttpServletResponse res) {
@@ -58,7 +58,7 @@ public class ReimbursementController {
 <span class="nc" id="L58">			res.getWriter().println(new ObjectMapper().writeValueAsString(reimbursements));</span>
 <span class="nc" id="L59">		} catch (IOException e) {</span>
 <span class="nc" id="L60">			logger.error(e);</span>
-		}
+<span class="nc" id="L61">		}</span>
 <span class="nc" id="L62">	}</span>
 	
 	public void sendSpecificData(HttpServletRequest req, HttpServletResponse res) {
@@ -70,7 +70,7 @@ public class ReimbursementController {
 <span class="nc" id="L70">		} catch (IOException e) {</span>
 <span class="nc" id="L71">			e.printStackTrace();</span>
 <span class="nc" id="L72">			logger.error(e);</span>
-		}
+<span class="nc" id="L73">		}</span>
 <span class="nc" id="L74">	}</span>
 
 	public void removeReimbursement(HttpServletRequest req, HttpServletResponse res) throws IOException {
@@ -83,12 +83,12 @@ public class ReimbursementController {
 <span class="nc" id="L83">			res.getWriter().println(&quot;You didn't enter a number!&quot;);</span>
 <span class="nc" id="L84">			e.printStackTrace();</span>
 <span class="nc" id="L85">			logger.error(e);</span>
-		}
+<span class="nc" id="L86">		}</span>
 <span class="nc" id="L87">		int updated = rs.deleteReimbursement(number);</span>
 <span class="nc bnc" id="L88" title="All 2 branches missed.">		if (updated &gt; 0) {</span>
 <span class="nc" id="L89">			res.getWriter().println(&quot;Something was deleted.&quot;);</span>
 <span class="nc" id="L90">			logger.info(&quot;User deleted an entry&quot;);</span>
-<span class="nc" id="L91">		} else {</span>
+		} else {
 <span class="nc" id="L92">			res.getWriter().println(&quot;Nothing was deleted!&quot;);</span>
 <span class="nc" id="L93">			logger.info(&quot;User failed to delete an entry&quot;);</span>
 		}
@@ -103,65 +103,67 @@ public class ReimbursementController {
 //			System.out.println(d);
 <span class="nc" id="L104">			r.setResolver_id(d.getId());</span>
 //			System.out.println(r);
+<span class="nc" id="L106">			ReimbursementDTO full = rs.viewByID(r.getId());</span>
+<span class="nc" id="L107">			double totalRequested = rs.sumUserOffers(full.getAuthor());</span>
 			try {
-<span class="nc" id="L107">				int reimResult = rs.approveReimbursement(r.getId(),r.getResolver_id());</span>
-<span class="nc" id="L108">				res.getWriter().println(&quot;the reimbursement was approved&quot;);</span>
-<span class="nc" id="L109">			} catch (Exception e) {</span>
-<span class="nc" id="L110">				e.printStackTrace();</span>
-<span class="nc" id="L111">				logger.error(e);</span>
-<span class="nc" id="L112">				res.getWriter().println(&quot;something went wrong&quot;);</span>
-			}
-<span class="nc" id="L114">		} catch (IOException e) {</span>
-<span class="nc" id="L115">			e.printStackTrace();</span>
-<span class="nc" id="L116">			logger.error(e);</span>
-<span class="nc" id="L117">			res.getWriter().println(&quot;something went wrong&quot;);</span>
-		}
-<span class="nc" id="L119">	}</span>
+<span class="nc" id="L109">				int reimResult = rs.approveReimbursement(r.getId(),r.getResolver_id());</span>
+<span class="nc" id="L110">				res.getWriter().println(&quot;Reimbursement was approved! &quot;+full.getAuthor()+&quot;'s total requested: $&quot;+totalRequested);</span>
+<span class="nc" id="L111">			} catch (Exception e) {</span>
+<span class="nc" id="L112">				e.printStackTrace();</span>
+<span class="nc" id="L113">				logger.error(e);</span>
+<span class="nc" id="L114">				res.getWriter().println(&quot;Something went wrong.&quot;);</span>
+<span class="nc" id="L115">			}</span>
+<span class="nc" id="L116">		} catch (IOException e) {</span>
+<span class="nc" id="L117">			e.printStackTrace();</span>
+<span class="nc" id="L118">			logger.error(e);</span>
+<span class="nc" id="L119">			res.getWriter().println(&quot;Something went wrong.&quot;);</span>
+<span class="nc" id="L120">		}</span>
+<span class="nc" id="L121">	}</span>
 	
 	public void denyReimbursement(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		try {
-<span class="nc" id="L123">			ReimbursementDTO r = new ObjectMapper().readValue(req.getInputStream(), ReimbursementDTO.class);</span>
+<span class="nc" id="L125">			ReimbursementDTO r = new ObjectMapper().readValue(req.getInputStream(), ReimbursementDTO.class);</span>
 //			System.out.println(r);
-<span class="nc" id="L125">			UserDTO d = us.findUserId(r.getResolver());</span>
+<span class="nc" id="L127">			UserDTO d = us.findUserId(r.getResolver());</span>
 //			System.out.println(d);
-<span class="nc" id="L127">			r.setResolver_id(d.getId());</span>
+<span class="nc" id="L129">			r.setResolver_id(d.getId());</span>
 //			System.out.println(r);
 			try {
-<span class="nc" id="L130">				int reimResult = rs.denyReimbursement(r.getId(),r.getResolver_id());</span>
-<span class="nc" id="L131">				res.getWriter().println(&quot;the reimbursement was denied&quot;);</span>
-<span class="nc" id="L132">			} catch (Exception e) {</span>
-<span class="nc" id="L133">				e.printStackTrace();</span>
-<span class="nc" id="L134">				logger.error(e);</span>
-<span class="nc" id="L135">				res.getWriter().println(&quot;something went wrong&quot;);</span>
-			}
-<span class="nc" id="L137">		} catch (IOException e) {</span>
-<span class="nc" id="L138">			e.printStackTrace();</span>
-<span class="nc" id="L139">			logger.error(e);</span>
-<span class="nc" id="L140">			res.getWriter().println(&quot;something went wrong&quot;);</span>
-		}
-<span class="nc" id="L142">	}</span>
+<span class="nc" id="L132">				int reimResult = rs.denyReimbursement(r.getId(),r.getResolver_id());</span>
+<span class="nc" id="L133">				res.getWriter().println(&quot;Reimbursement was denied.&quot;);</span>
+<span class="nc" id="L134">			} catch (Exception e) {</span>
+<span class="nc" id="L135">				e.printStackTrace();</span>
+<span class="nc" id="L136">				logger.error(e);</span>
+<span class="nc" id="L137">				res.getWriter().println(&quot;Something went wrong.&quot;);</span>
+<span class="nc" id="L138">			}</span>
+<span class="nc" id="L139">		} catch (IOException e) {</span>
+<span class="nc" id="L140">			e.printStackTrace();</span>
+<span class="nc" id="L141">			logger.error(e);</span>
+<span class="nc" id="L142">			res.getWriter().println(&quot;Something went wrong.&quot;);</span>
+<span class="nc" id="L143">		}</span>
+<span class="nc" id="L144">	}</span>
 
 	public void save(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		try {
-<span class="nc" id="L146">			ReimbursementDTO r = new ObjectMapper().readValue(req.getInputStream(), ReimbursementDTO.class);</span>
+<span class="nc" id="L148">			ReimbursementDTO r = new ObjectMapper().readValue(req.getInputStream(), ReimbursementDTO.class);</span>
 //			System.out.println(r);
-<span class="nc" id="L148">			UserDTO d = us.findUserId(r.getAuthor());</span>
+<span class="nc" id="L150">			UserDTO d = us.findUserId(r.getAuthor());</span>
 //			System.out.println(d);
-<span class="nc" id="L150">			r.setAuthor_id(d.getId());</span>
+<span class="nc" id="L152">			r.setAuthor_id(d.getId());</span>
 //			System.out.println(r);
 			try {
-<span class="nc" id="L153">				int reimResult = rs.submitReimbursement(r);</span>
-<span class="nc" id="L154">				res.getWriter().println(&quot;the reimbursement was added&quot;);</span>
-<span class="nc" id="L155">			} catch (Exception e) {</span>
-<span class="nc" id="L156">				e.printStackTrace();</span>
-<span class="nc" id="L157">				logger.error(e);</span>
-<span class="nc" id="L158">				res.getWriter().println(&quot;something went wrong&quot;);</span>
-			}
-<span class="nc" id="L160">		} catch (IOException e) {</span>
-<span class="nc" id="L161">			e.printStackTrace();</span>
-<span class="nc" id="L162">			logger.error(e);</span>
-<span class="nc" id="L163">			res.getWriter().println(&quot;something went wrong&quot;);</span>
-		}
-<span class="nc" id="L165">	}</span>
+<span class="nc" id="L155">				int reimResult = rs.submitReimbursement(r);</span>
+<span class="nc" id="L156">				res.getWriter().println(&quot;The reimbursement was added.&quot;);</span>
+<span class="nc" id="L157">			} catch (Exception e) {</span>
+<span class="nc" id="L158">				e.printStackTrace();</span>
+<span class="nc" id="L159">				logger.error(e);</span>
+<span class="nc" id="L160">				res.getWriter().println(&quot;Something went wrong.&quot;);</span>
+<span class="nc" id="L161">			}</span>
+<span class="nc" id="L162">		} catch (IOException e) {</span>
+<span class="nc" id="L163">			e.printStackTrace();</span>
+<span class="nc" id="L164">			logger.error(e);</span>
+<span class="nc" id="L165">			res.getWriter().println(&quot;Something went wrong.&quot;);</span>
+<span class="nc" id="L166">		}</span>
+<span class="nc" id="L167">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -107,18 +107,21 @@ function renderTable(reimbursements) {
   document.getElementById('sortCompleted').addEventListener('click', sortTableCompleted);
 
   async function sortTableAll() {
+    document.getElementById('notification').innerHTML='  ';
     const rows = document.getElementById('reimbTableBody').innerHTML='';
     asyncFetch("http://localhost:8080/reimbursement/allR.json", renderTable);
     whichTab = 0;
   }
 
   async function sortTablePending() {
+    document.getElementById('notification').innerHTML='  ';
     const rows = document.getElementById('reimbTableBody').innerHTML='';
     asyncFetch("http://localhost:8080/reimbursement/showPending.json", renderTable);
     whichTab = 1;
   }
 
   async function sortTableCompleted() {
+    document.getElementById('notification').innerHTML='  ';
     const rows = document.getElementById('reimbTableBody').innerHTML='';
     asyncFetch("http://localhost:8080/reimbursement/showCompleted.json", renderTable);
   }
@@ -126,6 +129,7 @@ function renderTable(reimbursements) {
   // ----------------------------------------- Employee registration -----------------------------------------
 document.getElementById('registerU').addEventListener('click', registerUser);
 async function registerUser() {
+  document.getElementById('notification').innerHTML='  ';
     const user = {
       username:document.getElementById('usernameNU').value,
       password:document.getElementById('passwordNU').value,
@@ -159,7 +163,10 @@ async function approveReimbursement(approveB) {
       body: JSON.stringify(reimbursement)
     });
     const json = await fetched.text();
-    console.log(json);
+    document.getElementById('notification').innerHTML='  ';
+    document.getElementById('notification').append(json);
+    document.getElementById('notification').style.color = "#00FF00";
+    document.getElementById('notification').style.fontSize = "larger";
     const rows = document.getElementById('reimbTableBody').innerHTML='';
     if(whichTab === 1) {
       asyncFetch("http://localhost:8080/reimbursement/showPending.json", renderTable);
@@ -179,7 +186,10 @@ async function denyReimbursement(denyB) {
     body: JSON.stringify(reimbursement)
   });
   const json = await fetched.text();
-  console.log(json);
+  document.getElementById('notification').innerHTML='  ';
+  document.getElementById('notification').append(json);
+  document.getElementById('notification').style.color = "#FFFF00";
+  document.getElementById('notification').style.fontSize = "larger";
   const rows = document.getElementById('reimbTableBody').innerHTML='';
   if(whichTab === 1) {
     asyncFetch("http://localhost:8080/reimbursement/showPending.json", renderTable);

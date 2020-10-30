@@ -6,15 +6,14 @@
 
 // export default username;
 
-let username;
-let role;
-
 async function logout() {
   alert("You have logged out. Goodbye!");
-  localStorage.setItem("key", null);
-  localStorage.setItem("key2", null);
+  localStorage.setItem("key", "nobody");
+  localStorage.setItem("key2", "nobody");
   document.getElementById("employeePortal").setAttribute("hidden", "true");
   document.getElementById("financeTools").setAttribute("hidden", "true");
+  document.getElementById("logoutButton").setAttribute("hidden", "true");
+  document.getElementById("logoutBar").setAttribute("hidden", "true");
 }
 
 async function loginFunction() {
@@ -46,13 +45,16 @@ async function loginFunction() {
 
     if (currentUser.role === "employee") {
       document.getElementById("employeePortal").removeAttribute("hidden");
-      document.getElementById('financeTools').setAttribute("hidden", "true");
+      document.getElementById("financeTools").setAttribute("hidden", "true");
     }
 
     if (currentUser.role === "finance_manager") {
       document.getElementById("financeTools").removeAttribute("hidden");
-      document.getElementById('employeePortal').setAttribute("hidden", "true");
+      document.getElementById("employeePortal").setAttribute("hidden", "true");
     }
+
+    document.getElementById("logoutButton").removeAttribute("hidden");
+    document.getElementById("logoutBar").removeAttribute("hidden");
   } else {
     alert("Invalid credentials!");
   }
@@ -63,3 +65,12 @@ document
   .addEventListener("click", loginFunction);
 
 console.log("howdy");
+
+removeButton();
+
+async function removeButton() {
+  if (localStorage.getItem("key") === "nobody") {
+    document.getElementById("logoutButton").setAttribute("hidden", "true");
+    document.getElementById("logoutBar").setAttribute("hidden", "true");
+  }
+}

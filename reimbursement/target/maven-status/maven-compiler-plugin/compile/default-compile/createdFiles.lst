@@ -8,7 +8,6 @@ com\web\model\ReimbursementDTO.class
 com\web\service\ReimbursementService.class
 com\web\controller\ReimbursementController.class
 com\web\repo\UserDao.class
-com\web\repo\VerboseReimbursementDao.class
 com\web\repo\DaoContract.class
 com\web\servlet\DataServlet.class
 com\web\model\ReimbursementType.class

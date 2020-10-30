@@ -1,10 +1,13 @@
 package com.web.repo;
 
+import java.math.BigDecimal;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.sql.Types;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,9 +23,30 @@ public class ReimbursementDao implements DaoContract<ReimbursementDTO, Integer, 
 	
 //	public static void main(String[] args) {
 //		ReimbursementDao dao = new ReimbursementDao();
-//		int updated = dao.approveRequest(4);
-//		System.out.println(updated);
+//		double result = dao.callSum("a");
+//		System.out.println(result);
 //	}
+	
+	public double callSum(String s) {
+		double result = 0;
+		BigDecimal big = new BigDecimal(0);
+		try(Connection conn = ConnectionUtil.getInstance().getConnection()){
+			String sql="{ ? = call total(?) }";
+			CallableStatement cs = conn.prepareCall(sql);
+			cs.registerOutParameter(1, Types.NUMERIC);
+			cs.setString(2, s);
+			cs.execute();
+			big = cs.getBigDecimal(1);
+			cs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if(big==null) {
+			return result;
+		}
+		result = big.doubleValue();
+		return result;
+	}
 	
 	@Override
 	public List<ReimbursementDTO> findAll() {
@@ -101,6 +125,23 @@ public class ReimbursementDao implements DaoContract<ReimbursementDTO, Integer, 
 			e.printStackTrace();
 		}
 		return r;
+	}
+	
+	public int getIDFromAmount(Integer i) {
+		int r = 0;
+		String sql = "select * from complete_reimbursement where reimb_amount=?";
+		try(Connection conn = ConnectionUtil.getInstance().getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, i);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				r = rs.getInt("reimb_id");
+			}
+		} catch (SQLException e) {
+			logger.error(e);
+			e.printStackTrace();
+		}
+		return r;
 	}	
 	
 	@Override
@@ -137,6 +178,7 @@ public class ReimbursementDao implements DaoContract<ReimbursementDTO, Integer, 
 		return updated;
 	}
 	
+	// ID is first, Resolver ID is second
 	public int approveRequest(Integer i, Integer i2) {
 		int updated = 0;
 		try (Connection conn = ConnectionUtil.getInstance().getConnection()) {
@@ -153,6 +195,7 @@ public class ReimbursementDao implements DaoContract<ReimbursementDTO, Integer, 
 		return updated;
 	}
 	
+	// ID is first, Resolver ID is second
 	public int denyRequest(Integer i, Integer i2) {
 		int updated = 0;
 		try (Connection conn = ConnectionUtil.getInstance().getConnection()) {

@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.annotation.processing.SupportedSourceVersion;
-
 import org.apache.log4j.Logger;
 
 import com.web.model.UserDTO;

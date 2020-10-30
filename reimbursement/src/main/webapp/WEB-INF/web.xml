@@ -18,7 +18,7 @@
 	</error-page>
 	<error-page>
 		<exception-type>java.sql.SQLException</exception-type>
-		<location>/html/error.html</location>
+		<location>/html/newError.html</location>
 	</error-page>
 	<!-- <servlet-mapping> <servlet-name>indirect</servlet-name> <url-pattern>"*.page"</url-pattern> 
 		</servlet-mapping> -->

@@ -103,9 +103,11 @@ public class ReimbursementController {
 //			System.out.println(d);
 			r.setResolver_id(d.getId());
 //			System.out.println(r);
+			ReimbursementDTO full = rs.viewByID(r.getId());
+			double totalRequested = rs.sumUserOffers(full.getAuthor());
 			try {
 				int reimResult = rs.approveReimbursement(r.getId(),r.getResolver_id());
-				res.getWriter().println("Reimbursement was approved!");
+				res.getWriter().println("Reimbursement was approved! "+full.getAuthor()+"'s total requested: $"+totalRequested);
 			} catch (Exception e) {
 				e.printStackTrace();
 				logger.error(e);
@@ -128,7 +130,7 @@ public class ReimbursementController {
 //			System.out.println(r);
 			try {
 				int reimResult = rs.denyReimbursement(r.getId(),r.getResolver_id());
-				res.getWriter().println("The reimbursement was denied.");
+				res.getWriter().println("Reimbursement was denied.");
 			} catch (Exception e) {
 				e.printStackTrace();
 				logger.error(e);

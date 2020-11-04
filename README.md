@@ -20,6 +20,7 @@ The Expense Reimbursement System (ERS) will manage the process of reimbursing em
 - Finance managers can create new employees
 
 ![alt text](./images/home_screen.png?raw=true)
+![alt text](./images/manager_screen.png?raw=true)
 
 To-do list:
 - Improve security

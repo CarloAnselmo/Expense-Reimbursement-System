@@ -19,6 +19,8 @@ The Expense Reimbursement System (ERS) will manage the process of reimbursing em
 - Finance managers may click on dynamically generated buttons to approve/deny reimbursement requests
 - Finance managers can create new employees
 
+![alt text](./images/home_screen.png?raw=true)
+
 To-do list:
 - Improve security
 - Improve stability of EC2-deployed project

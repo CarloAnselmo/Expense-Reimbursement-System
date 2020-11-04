@@ -24,7 +24,7 @@ To-do list:
 - Improve stability of EC2-deployed project
 
 ## Getting Started
-1. Open up a your terminal and navigate to desired folder.
+1. Open up your terminal and navigate to desired folder to copy the project using `cd /(location)`.
 2. run `git clone https://github.com/CarloAnselmo/Expense-Reimbursement-System.git`.
 3. Open up project in your desired Java IDE.
 4. Create a SQL database if you don't already have one, and change the environmental variables of the project to ones that match your database.
